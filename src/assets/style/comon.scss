@@ -1,0 +1,11 @@
+@import './blocks/header.scss';
+@import './blocks//navbarMain.scss';
+@import './blocks/mainLayout.scss';
+@import './blocks/goods.scss';
+@import './blocks/currentGoods.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+html, body {
+    font-family: 'Roboto'!important;
+    color: black!important;
+}

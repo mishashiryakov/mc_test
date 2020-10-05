@@ -1,0 +1,44 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+}
+
+.burger-img {
+   cursor: pointer;
+   height: 80%;
+}
+
+.burger {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.burger:hover {
+    background: rgba(128, 125, 125, 0.575);
+}
+
+.item {
+    cursor: pointer;
+    background: purple;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 50px;
+    margin-bottom: 10px;
+    user-select: none;
+}
+
+.items-container {
+    display: flex;
+    flex-direction: column;
+}

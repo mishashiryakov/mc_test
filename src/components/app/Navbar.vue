@@ -1,69 +1,124 @@
 <template>
-    <nav class="navbar orange lighten-1">
-      <div class="nav-wrapper">
-        <div class="navbar-left">
-          <button href="#" @click.prevent="$emit('click')">
-            <img src="../../assets/icons/burger.png">
-          </button>
+  <div class="nav-wrapper">
 
-        </div>
+    <div class="logo">
+      <router-link
+        to="/"
+      >
+        <img class="icon" src="../../assets/icons/nike-logo.png" />
+      </router-link>
+    </div>
 
-        <ul class="right hide-on-small-and-down">
-          <li>
-            <a
-                class="dropdown-trigger black-text"
-                href="#"
-                data-target="dropdown"
-                ref="dropdown"
+    <div class="dropdown-block">
+      <Dropdown  v-on:on-click="setCurrentItem($event)">
+        <a href="javascript:void(0)">
+            Одежда
+            <Icon type="ios-arrow-down"></Icon>
+        </a>
+        <DropdownMenu slot="list">
+            <Dropdown-item
+              v-for="item in clothes"
+              :key="item.title"
+              :name="item.name"
             >
-              USER NAME
-              <i class="material-icons right">arrow_drop_down</i>
-            </a>
+              <router-link
+                :to="item.url"
+              >
+                {{item.title}}
+              </router-link>
+            </Dropdown-item>
+        </DropdownMenu>
+      </Dropdown>
 
-            <ul id='dropdown' class='dropdown-content'>
-              <li>
-                <router-link to="/profile" class="black-text">
-                  <i class="material-icons">account_circle</i>Профиль
-                </router-link>
-              </li>
-              <li class="divider" tabindex="-1"></li>
-              <li>
-                <a href="#" class="black-text">
-                  <i class="material-icons">assignment_return</i>Выйти
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <Dropdown v-on:on-click="setCurrentItem($event)">
+        <a href="javascript:void(0)">
+            Акссесуары
+            <Icon type="ios-arrow-down"></Icon>
+        </a>
+        <DropdownMenu slot="list">
+            <Dropdown-item
+              v-for="item in accesories"
+              :key="item.title"
+              :name="item.name"
+            >
+              <router-link
+                :to="item.url"
+              >
+                {{item.title}}
+              </router-link>
+            </Dropdown-item>
+        </DropdownMenu>
+      </Dropdown>
+
+      <Dropdown v-on:on-click="setCurrentItem($event)">
+        <a href="javascript:void(0)">
+            Коллекции
+            <Icon type="ios-arrow-down"></Icon>
+        </a>
+        <DropdownMenu slot="list">
+          <Dropdown-item
+              v-for="item in collections"
+              :key="item.title"
+              :name="item.name"
+            >
+              <router-link
+                :to="item.url"
+              >
+                {{item.title}}
+              </router-link>
+            </Dropdown-item>
+        </DropdownMenu>
+      </Dropdown>
+    </div>
+
+    <div class="search-block">
+      <img class="icon" src="../../assets/icons/search.png" />
+      <router-link
+        to="/cart"
+      >
+        <img class="icon" src="../../assets/icons/cart .png" />
+      </router-link>
+    </div>
+  </div>
 </template>
 
-
 <script>
+import { Dropdown, DropdownMenu, DropdownItem, Icon } from 'view-design'
 export default {
-  data: () => ({
-    date: new Date(),
-    interval: null,
-    dropdown: null,
-  }),
-  // methods: {
-  //   logout() {
-  //     this.$router.push('/login?message=logout')
-  //   }
-  // },
-  mounted() {
-    this.interval = setInterval(() => {
-      this.date = new Date()
-    }, 1000)
-    this.dropdown = M.Dropdown.init(this.$refs.dropdown, {
-      constrainWidth: false
-    })
+  name: 'Navbar',
+  components: {
+    Dropdown, DropdownMenu, DropdownItem, Icon
   },
-  beforeDestroy() {
-    clearInterval(this.interval)
-    if (this.dropdown && this.dropdown.destroy) {
-      this.dropdown.destroy
+  data () {
+    return {
+      visible: false,
+      clothes: [
+        {title: 'Футболки', url: '/goods', name: 'tshirt'},
+        {title: 'Худи', url: '/goods', name: 'hoodie'},
+        {title: 'Шорты', url: '/goods', name: 'short'},
+      ],
+      accesories: [
+        {title: 'Кепки', url: '/goods', name: 'cap'},
+        {title: 'Сумки', url: '/goods', name: 'bag'},
+      ],
+      collections: [
+        {title: 'Air Max', url: '/goods', name: 'airmax'},
+        {title: 'Dry Fit', url: '/goods', name: 'dryfit'},
+        {title: 'Zoom', url: '/goods', name: 'zoom'},
+      ],
+      name: null,
+    }
+  },
+  methods: {
+    handleOpen () {
+      this.visible = true;
+    },
+    handleClose () {
+      this.visible = false;
+    },
+    setCurrentItem (name) {
+      console.log('HI', name)
+      this.$store.commit('setCurrentItem', name)
     }
   }
 }

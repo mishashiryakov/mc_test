@@ -18,52 +18,24 @@ const router = new VueRouter({
   routes: [
     ...routes,
     {
-      path: '/login',
-      name: 'login',
-      meta: {layout: 'empty'},
-      component: () => import('../views/Login.vue')
+      path: '/about',
+      name: 'about',
+      component: () => import('../views/About.vue')
     },
     {
-      path: '/register',
-      name: 'register',
-      meta: {layout: 'empty'},
-      component: () => import('../views/Register.vue')
+      path: '/cart',
+      name: 'cart',
+      component: () => import('../views/Cart.vue')
     },
     {
-      path: '/categories',
-      name: 'categories',
-      meta: {layout: 'main'},
-      component: () => import('../views/Categories.vue')
+      path: '/goods',
+      name: 'goods',
+      component: () => import('../views/Goods.vue')
     },
     {
-      path: '/detail/:id',
-      name: 'detail',
-      meta: {layout: 'main'},
-      component: () => import('../views/Detail.vue')
-    },
-    {
-      path: '/history',
-      name: 'history',
-      meta: {layout: 'main'},
-      component: () => import('../views/History.vue')
-    },
-    {
-      path: '/planning',
-      name: 'planning',
-      meta: {layout: 'main'},
-      component: () => import('../views/Planning.vue')
-    },
-    {
-      path: '/profile',
-      name: 'profile',
-      meta: {layout: 'main'},
-      component: () => import('../views/Profile.vue')
-    },
-    {
-      path: '/record',
-      name: 'record',
-      meta: {layout: 'main'},
-      component: () => import('../views/Record.vue')
+      path: '/current-goods',
+      name: 'current-goods',
+      component: () => import('../views/CurrentGoods.vue')
     }
   ]
 })

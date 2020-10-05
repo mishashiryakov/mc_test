@@ -7,21 +7,39 @@
 </template>
 
 <script>
-import EmptyLayout from '@/layouts/EmptyLayout'
+import NarrowLayout from '@/layouts/NarrowLayout'
 import MainLayout from '@/layouts/MainLayout'
 export default {
+  name: 'App',
+  components: {
+    NarrowLayout, MainLayout
+  },
   computed: {
-    layout() {
-      return (this.$route.meta.layout || 'empty') + '-layout'
+  layout() {
+    if (this.width < 800) {
+      return 'narrow-layout'
+    } else {
+        return 'main-layout'
+      }
     }
   },
-  components: {
-    EmptyLayout, MainLayout
-  }
+  data () {
+      return {
+        width: null
+      }
+  },
+  created() {
+    window.addEventListener('resize', this.updateWidth);
+    this.updateWidth()
+  },
+  methods: {
+    updateWidth() {
+      this.width = window.innerWidth;
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-@import '~materialize-css/dist/css/materialize.min.css';
-@import 'assets/index.css';
+@import './assets/style/comon.scss';
 </style>

@@ -1,0 +1,36 @@
+.goods-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 100px;
+}
+
+.goods-item {
+    width: 20vw;
+    // height: 600px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.goods-img {
+    width: 100%;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.price-common {
+    font-weight: 700;
+    font-size: 15px;
+    color: black;
+    user-select: none;
+}
+
+.item-name-common {
+    font-size: 20px;
+    user-select: none;
+}

@@ -1,0 +1,41 @@
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+}
+
+.dropdown-block {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ivu-dropdown-item a {
+    color: black!important;
+    font-size: 15px;
+}
+
+.ivu-dropdown-rel a {
+    color: black!important;
+    font-size: 15px;
+}
+
+.ivu-select-dropdown {
+    box-shadow: none!important;
+}
+
+
+.search-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 60px;
+}
+
+.icon {
+    height: 20px;
+}
+
+.logo {
+    cursor: pointer;
+}

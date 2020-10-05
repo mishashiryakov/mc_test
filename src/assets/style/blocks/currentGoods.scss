@@ -1,0 +1,157 @@
+.current-goods-wrapper {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.current-goods-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-block {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+
+.img-previews {
+  width: 10%;
+}
+
+.img-preview {
+  width: 100%;
+  cursor: pointer;
+  opacity: .6;
+}
+
+.active-img {
+  opacity: 1;
+}
+
+.main-img-block {
+  width: 85%;
+}
+
+.main-img {
+  width: 100%;
+  // cursor: pointer;
+}
+
+.ivu-carousel-arrow {
+  background: none!important;
+  color: black!important;
+}
+
+.ivu-carousel-arrow:hover {
+  background: rgba(31,45,61,.11)!important;
+}
+
+button .ivu-icon {
+  font-size: 20px;
+}
+
+.current-goods-info {
+  width: 50%;
+  padding: 0 30px;
+}
+
+.current-goods-name {
+  border-bottom: 1px solid #EAEAEA;
+  margin-bottom: 38px;
+}
+
+.current-goods-headline {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.current-goods-price {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
+.current-goods-size {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-goods-size p {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.current-goods-size-buttons {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.current-goods-size-button {
+  height: 50px;
+  width: 50px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 11px;
+  border: 1px solid #DBDBDB;
+  font-size: 15px;
+  font-weight: 700;
+  user-select: none;
+}
+
+.current-goods-size-button:hover {
+  border: 1px solid #000000;
+}
+
+.current-goods-size-button.active {
+  background-color: black;
+  color: white;
+}
+
+.current-goods-color-buttons {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.current-goods-color-button {
+  height: 50px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 11px;
+  border: 1px solid #DBDBDB;
+  font-size: 15px;
+  font-weight: 700;
+  user-select: none;
+  padding: 0 27px;
+}
+
+.current-goods-color-button.active {
+  background-color: black;
+  color: white;
+}
+
+.current-goods-color-button:hover {
+  border: 1px solid #000000;
+}
+
+.quantity-to-cart {
+  background: #F4F4F4;
+  width: 160px;
+  height: 60px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 19px;
+}
+
+.quantity-to-cart img {
+  cursor: pointer;
+}
