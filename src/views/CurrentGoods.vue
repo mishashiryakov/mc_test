@@ -175,7 +175,6 @@ export default {
       value1: 0,
       size: 'S',
       color: '',
-      counter: 1,
       clothesData,
       offers,
 
@@ -194,36 +193,7 @@ export default {
   },
   mounted () {
     console.log('mounted')
-
-
-
-    document.querySelector('.img-preview').classList.add('active-img');
-
-    const MAIN_IMG = document.querySelectorAll('.main-img');
-    document.querySelector('.ivu-carousel-list').addEventListener('mousemove', e => {
-        const x = e.clientX - document.querySelector('.ivu-carousel-list').getBoundingClientRect().left;
-        const y = e.clientY - document.querySelector('.ivu-carousel-list').getBoundingClientRect().top;
-        MAIN_IMG[this.value1].style.transformOrigin = `${x}px ${y}px`;
-        MAIN_IMG[this.value1].style.transform = "scale(2)";
-    })
-
-    document.querySelector('.ivu-carousel-list').addEventListener('mouseleave', () => {
-        MAIN_IMG[this.value1].style.transformOrigin = "center center";
-        MAIN_IMG[this.value1].style.transform = "scale(1)";
-    })
-
-    document.querySelector('.current-goods-size-button').classList.add('active');
-    document.querySelector('.current-goods-color-button').classList.add('active');
-
-    document.querySelector('.add-to-cart-button').addEventListener('mousedown', (el) => {
-      el.currentTarget.classList.add('active')
-    });
-
-    document.querySelector('.add-to-cart-button').addEventListener('mouseup', (el) => {
-      el.currentTarget.classList.remove('active')
-    });
-
-
+    this.startComponent()
   },
   updated () {
     document.querySelectorAll('.img-preview').forEach(
@@ -232,6 +202,34 @@ export default {
     document.querySelectorAll('.img-preview')[this.value1].classList.add('active-img')
   },
   methods: {
+    startComponent () {
+      console.log('start')
+      document.querySelector('.img-preview').classList.add('active-img');
+
+      const MAIN_IMG = document.querySelectorAll('.main-img');
+      document.querySelector('.ivu-carousel-list').addEventListener('mousemove', e => {
+          const x = e.clientX - document.querySelector('.ivu-carousel-list').getBoundingClientRect().left;
+          const y = e.clientY - document.querySelector('.ivu-carousel-list').getBoundingClientRect().top;
+          MAIN_IMG[this.value1].style.transformOrigin = `${x}px ${y}px`;
+          MAIN_IMG[this.value1].style.transform = "scale(2)";
+      })
+
+      document.querySelector('.ivu-carousel-list').addEventListener('mouseleave', () => {
+          MAIN_IMG[this.value1].style.transformOrigin = "center center";
+          MAIN_IMG[this.value1].style.transform = "scale(1)";
+      })
+
+      document.querySelector('.current-goods-size-button').classList.add('active');
+      document.querySelector('.current-goods-color-button').classList.add('active');
+
+      document.querySelector('.add-to-cart-button').addEventListener('mousedown', (el) => {
+        el.currentTarget.classList.add('active')
+      });
+
+      document.querySelector('.add-to-cart-button').addEventListener('mouseup', (el) => {
+        el.currentTarget.classList.remove('active')
+      });
+    },
     setValue (event) {
       this.value1 = +event.target.id;
     },
@@ -260,7 +258,14 @@ export default {
 
     },
     setCurrentGoods (category, item) {
-      this.$store.commit('setCurrentGoods', [category, item])
+      this.$store.commit('setCurrentGoods', [category, item]);
+      // this.counter = 1;
+      // this.value1 = 0;
+      // this.size = 'S';
+      // this.color = '';
+      // this.$forceUpdate()
+      // Object.assign(this.$data, this.$options.data.call(this));
+      // this.startComponent()
       while (Math.max(document.body.scrollTop,document.documentElement.scrollTop) > 0) {
         window.scrollBy(0,-100);
       }

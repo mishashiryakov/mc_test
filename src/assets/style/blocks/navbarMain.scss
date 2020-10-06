@@ -1,13 +1,20 @@
 .nav-wrapper {
     display: flex;
     justify-content: space-between;
-    height: 150px;
+    height: 100px;
+    position: sticky;
+    top: 0;
+    z-index: 15;
+    background: white;
+    display: flex;
+    align-items: center;
 }
 
 .dropdown-block {
     width: 350px;
     display: flex;
     justify-content: space-between;
+    user-select: none;
 }
 
 .ivu-dropdown-item a {
@@ -30,12 +37,15 @@
     justify-content: space-between;
     align-items: flex-start;
     width: 60px;
+    user-select: none;
 }
 
 .icon {
     height: 20px;
+    cursor: pointer;
 }
 
 .logo {
     cursor: pointer;
+    user-select: none;
 }
