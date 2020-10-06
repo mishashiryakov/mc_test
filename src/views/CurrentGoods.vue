@@ -6,7 +6,7 @@
         <div class="img-previews">
           <img
             class="img-preview"
-            v-for="(img, index) in currentGoods.images"
+            v-for="(img, index) in clothesData[currentGoods[0]][currentGoods[1]].images"
             :key="img"
             :src="img"
             :id="index"
@@ -21,7 +21,7 @@
 
           >
             <CarouselItem
-              v-for="img in currentGoods.images"
+              v-for="img in clothesData[currentGoods[0]][currentGoods[1]].images"
               :key="img"
 
             >
@@ -39,10 +39,10 @@
       <div class="current-goods-info">
         <div class="current-goods-name">
           <p class="current-goods-headline">
-            {{currentGoods.name}}
+            {{clothesData[currentGoods[0]][currentGoods[1]].name}}
           </p>
           <p class="current-goods-price">
-            {{currentGoods.price}}
+            {{clothesData[currentGoods[0]][currentGoods[1]].price}}
           </p>
         </div>
         <div class="current-goods-size">
@@ -52,7 +52,7 @@
           <div class="current-goods-size-buttons">
             <div
               class="current-goods-size-button"
-              v-for="size in currentGoods.sizes"
+              v-for="size in clothesData[currentGoods[0]][currentGoods[1]].sizes"
               :key="size"
               v-on:click="selectSize($event)"
             >
@@ -65,7 +65,7 @@
             <div class="current-goods-color-buttons">
               <div
                 class="current-goods-color-button"
-                v-for="color in currentGoods.colors"
+                v-for="color in clothesData[currentGoods[0]][currentGoods[1]].colors"
                 :key="color"
                 v-on:click="selectColor($event)"
               >
@@ -74,21 +74,78 @@
             </div>
             <div class="add-to-cart-block">
               <div class="quantity-to-cart">
-                <img
+                <div
                   id="minus"
-                  src="../assets/icons/minus.png"
+                  class="quantity-icon"
                   v-on:click="setCounter($event)"
-                />
-                <div class="quantity-button">{{this.counter}}</div>
-                <img src="../assets/icons/plus.png" />
+                >
+                  <img src="../assets/icons/minus.png" />
+                </div>
+
+                <div class="quantity-button">
+                  {{this.counter}}
+                </div>
+
+                <div
+                  class="quantity-icon"
+                  v-on:click="setCounter($event)"
+                >
+                  <img src="../assets/icons/plus.png" />
+                </div>
+              </div>
+
+              <div v-on:click="addToCart" class="add-to-cart-button">
+                В корзину
               </div>
 
             </div>
         </div>
+
+        <div class="current-goods-description-block">
+          <p class="current-goods-description">
+            {{clothesData[currentGoods[0]][currentGoods[1]].description}}
+          </p>
+
+          <div class="current-goods-composition">
+            <span>Состав: </span>
+            <p>
+              {{clothesData[currentGoods[0]][currentGoods[1]].composition}}
+            </p>
+          </div>
+
+          <p class="current-goods-care-title">
+            Рекомендация по уходу:
+          </p>
+
+          <p class="current-goods-care">
+            {{clothesData[currentGoods[0]][currentGoods[1]].care}}
+          </p>
+
+
+        </div>
       </div>
     </div>
 
-    <div class="catalog">
+    <div class="catalog-block">
+      <p class="offer-headline">Смотрите также</p>
+      <div class="offer-goods">
+        <div
+        class="goods-item"
+        v-for="item in offers"
+        :key="item.name"
+        v-on:click="setCurrentGoods(item.category, item.nameObj)"
+      >
+
+        <router-link
+          to="/current-goods"
+        >
+          <img class="goods-img" :src="item.images[0]"/>
+        </router-link>
+
+        <p class="item-name-common">{{item.name}}</p>
+        <p class="price-common">{{item.price}}</p>
+      </div>
+      </div>
 
     </div>
 
@@ -99,28 +156,47 @@
 </template>
 
 <script>
-import { Carousel, CarouselItem } from 'view-design'
+import { Carousel, CarouselItem } from 'view-design';
+import { clothesData } from '../data';
+
 export default {
   name: 'CurrentGoods',
   components: {
     Carousel, CarouselItem
   },
   data () {
+    console.log('data', clothesData)
+    const offers = [clothesData['tshirt']['nikePro'], clothesData['hoodie']['sportswear'], clothesData['tshirt']['nike']];
+    console.log('offers', offers)
+
+
     return {
       counter: 1,
       value1: 0,
       size: 'S',
       color: '',
-      counter: 1
+      counter: 1,
+      clothesData,
+      offers,
+
     }
   },
   computed: {
     currentGoods () {
-      return this.$store.getters.getCurrentGoods
+      // return this.$store.getters.getCurrentGoods
+      if(this.$store.getters.getCurrentGoods) {
+
+        return this.$store.getters.getCurrentGoods
+      } else {
+        return 'nigeria';
+      }
     }
   },
   mounted () {
     console.log('mounted')
+
+
+
     document.querySelector('.img-preview').classList.add('active-img');
 
     const MAIN_IMG = document.querySelectorAll('.main-img');
@@ -139,10 +215,17 @@ export default {
     document.querySelector('.current-goods-size-button').classList.add('active');
     document.querySelector('.current-goods-color-button').classList.add('active');
 
+    document.querySelector('.add-to-cart-button').addEventListener('mousedown', (el) => {
+      el.currentTarget.classList.add('active')
+    });
+
+    document.querySelector('.add-to-cart-button').addEventListener('mouseup', (el) => {
+      el.currentTarget.classList.remove('active')
+    });
+
 
   },
   updated () {
-    console.log('update', this.value1);
     document.querySelectorAll('.img-preview').forEach(
       (el) => el.classList.remove('active-img')
     )
@@ -167,9 +250,25 @@ export default {
       event.currentTarget.classList.add('active')
     },
     setCounter (event) {
-      this.counter += 1;
-      
-    }
+      if (event.currentTarget.id) {
+        this.counter == 1 ? '1' : this.counter -= 1;
+      } else {
+        this.counter += 1;
+      }
+    },
+    addToCart () {
+
+    },
+    setCurrentGoods (category, item) {
+      this.$store.commit('setCurrentGoods', [category, item])
+      while (Math.max(document.body.scrollTop,document.documentElement.scrollTop) > 0) {
+        window.scrollBy(0,-100);
+      }
+    },
+
+  },
+  created () {
+    this.$store.commit('getCurrentGoodsFromStorage')
   }
 }
 </script>

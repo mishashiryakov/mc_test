@@ -2,9 +2,9 @@
   <div class="goods-wrapper">
     <div
       class="goods-item"
-      v-for="item in clothesData[currentItem[0]]"
+      v-for="item in clothesData[currentItem]"
       :key="item.name"
-      v-on:click="setCurrentGoods(item)"
+      v-on:click="setCurrentGoods(item.category, item.nameObj)"
     >
       <!-- <div
         v-bind:style="{ backgroundImage: 'url(' + item.images[0] + ')', backgroundSize: 'cover', backgroundPosition: 'center' }"
@@ -33,17 +33,21 @@ export default {
     }
   },
   methods: {
-    setCurrentGoods (item) {
-      this.$store.commit('setCurrentGoods', item)
+    setCurrentGoods (category, item) {
+      this.$store.commit('setCurrentGoods', [category, item])
     }
   },
   computed: {
     currentItem () {
-      return this.$store.getters.getCurrentItem
+      if(this.$store.getters.getCurrentItem) {
+        return this.$store.getters.getCurrentItem
+      } else {
+        return 'tshirt';
+      }
     }
   },
   created() {
-
+    this.$store.commit('getCurrentItemFromStorage')
   }
 }
 </script>

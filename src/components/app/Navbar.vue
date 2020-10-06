@@ -102,7 +102,7 @@ export default {
         {title: 'Сумки', url: '/goods', name: 'bag'},
       ],
       collections: [
-        {title: 'Air Max', url: '/goods', name: 'airmax'},
+        {title: 'Air Zoom', url: '/goods', name: 'airzoom'},
         {title: 'Dry Fit', url: '/goods', name: 'dryfit'},
         {title: 'Zoom', url: '/goods', name: 'zoom'},
       ],
@@ -118,7 +118,7 @@ export default {
     },
     setCurrentItem (name) {
       console.log('HI', name)
-      this.$store.commit('setCurrentItem', name)
+        this.$store.commit('setCurrentItem', name)
     }
   }
 }
