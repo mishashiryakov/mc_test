@@ -58,6 +58,28 @@ button .ivu-icon {
   padding: 0 30px;
 }
 
+.ivu-breadcrumb {
+  font-size: 10px!important;
+  color: rgb(153,153,153)!important;
+  font-weight: 400!important;
+}
+
+.ivu-breadcrumb>span:last-child {
+  font-size: 10px!important;
+  color: rgb(153,153,153)!important;
+  font-weight: 400!important;
+}
+
+.ivu-breadcrumb-item-link {
+  font-size: 10px!important;
+  color: rgb(153,153,153)!important;
+  font-weight: 400!important;
+}
+
+.breadcrumb {
+  margin-bottom: 15px;
+}
+
 .current-goods-name {
   border-bottom: 1px solid #EAEAEA;
   margin-bottom: 38px;
@@ -229,15 +251,63 @@ button .ivu-icon {
 }
 
 .catalog-block {
-  // display: flex;
+  margin-bottom: 70px;
 }
 
 .offer-goods {
   display: flex;
+  border-bottom: 1px solid #EAEAEA;
 }
 
 .offer-headline {
   font-size: 25px;
   font-weight: 700;
   margin-bottom: 40px;
+}
+
+.offer-item {
+  width: 20vw;
+  margin-right: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.history-views {
+  margin-bottom: 90px;
+}
+
+.history-slide {
+  width: 250px;
+  display: flex;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.img-slide {
+  width: 70px;
+  margin-right: 19px;
+}
+
+.VueCarousel-navigation-button {
+  font-size: 40px;
+}
+
+.history-headline {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.history-name {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.history-price {
+  font-weight: 700;
+  font-size: 15px;
 }

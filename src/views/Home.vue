@@ -1,6 +1,7 @@
 <template>
-<div>
-  <h1>This is an Home page</h1>
+<div class="home-block">
+  <img class="home-img" src="../assets/main.jpg" />
+  <!-- <h1>This is an Home page</h1>
 
   <ul class="items-container">
     <li
@@ -11,7 +12,7 @@
       >
       {{item.title}}</li>
 
-  </ul>
+  </ul> -->
   </div>
 </template>
 

@@ -7,18 +7,41 @@ export default new Vuex.Store({
   state: {
     items: [],
     currentItem: [],
-    currentGoods: []
+    currentGoods: [],
+    history: []
   },
   mutations: {
     addNewItem (state, payload) {
-      state.items = [...state.items, payload]
-      window.localStorage.setItem('cart' , JSON.stringify(state.items));
+      if (state.items.length) {
+        let itemInCart = false;
+
+        state.items.map((item) => {
+          if (item[1] == payload[1] && item[3] == payload[3] ) {
+            itemInCart = true;
+            item[2] = item[2] + payload[2];
+            window.localStorage.setItem('cart' , JSON.stringify(state.items));
+          }
+        })
+
+        if (!itemInCart) {
+          state.items = [...state.items, payload]
+          window.localStorage.setItem('cart' , JSON.stringify(state.items));
+        }
+      } else {
+        state.items = [...state.items, payload]
+        window.localStorage.setItem('cart' , JSON.stringify(state.items));
+      }
     },
     getDataFromStorage (state) {
       if (window.localStorage.getItem('cart')) {
         state.items =  [...JSON.parse(window.localStorage.getItem('cart'))]
       }
     },
+    deleteItemFromCart (state, payload) {
+      state.items.splice(payload, 1);
+      window.localStorage.setItem('cart' , JSON.stringify(state.items));
+    },
+
     setCurrentItem (state, payload) {
       state.currentItem = [payload]
       window.localStorage.setItem('currentitem' , JSON.stringify(state.currentItem));
@@ -36,12 +59,54 @@ export default new Vuex.Store({
       if (window.localStorage.getItem('currentgoods')) {
         state.currentGoods =  [...JSON.parse(window.localStorage.getItem('currentgoods'))]
       }
+    },
+    addNewItemToHistory (state, payload) {
+      let arr = [...state.history, payload];
+
+      function unique(arr) {
+        let result = [];
+        for (let el of arr) {
+          if (!result.join('').includes(el.join())) {
+            result.push(el);
+          }
+        }
+        return result;
+      }
+
+      state.history = unique(arr);
+      window.localStorage.setItem('history' , JSON.stringify(state.history));
+    },
+    getHistoryFromStorage (state) {
+      if (window.localStorage.getItem('history')) {
+        state.history =  [...JSON.parse(window.localStorage.getItem('history'))]
+      }
+    },
+    setCounterInCart (state, payload) {
+      console.log(payload)
+      if (payload[1]) {
+        console.log('counter', state.items[payload[0]][2])
+        if(!(state.items[payload[0]][2] === 1)) {
+          const newItem = state.items[payload[0]];
+          newItem[2] -= 1;
+          console.log(newItem)
+          state.items.splice(payload[0], 1, newItem)
+          window.localStorage.setItem('cart' , JSON.stringify(state.items));
+        }
+      } else {
+        const newItem = state.items[payload[0]];
+        newItem[2] += 1;
+        console.log(newItem)
+        state.items.splice(payload[0], 1, newItem)
+        window.localStorage.setItem('cart' , JSON.stringify(state.items));
+      }
     }
+
   },
   getters: {
     getCartData: (state) => state.items,
     getCurrentItem: (state) => state.currentItem[0],
-    getCurrentGoods: (state) => state.currentGoods
+    getCurrentGoods: (state) => state.currentGoods,
+    getHistory: (state) =>state.history
   },
   actions: {
 

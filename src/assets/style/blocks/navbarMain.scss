@@ -49,3 +49,23 @@
     cursor: pointer;
     user-select: none;
 }
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.ivu-drawer-body {
+    padding: 40px!important;
+}
+
+.cart-title {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.cart-close {
+    cursor: pointer;
+}

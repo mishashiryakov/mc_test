@@ -17,13 +17,13 @@
       </router-link>
 
       <p class="item-name-common">{{item.name}}</p>
-      <p class="price-common">{{item.price}}</p>
+      <p class="price-common">{{item.price + ' ₽'}}</p>
     </div>
   </div>
 </template>
 
 <script>
-import { clothesData } from '../data'
+import { clothesData } from '../data';
 
 export default {
   name: 'goods',
@@ -34,7 +34,8 @@ export default {
   },
   methods: {
     setCurrentGoods (category, item) {
-      this.$store.commit('setCurrentGoods', [category, item])
+      this.$store.commit('setCurrentGoods', [category, item]);
+      this.$store.commit('addNewItemToHistory', [category, item]);
     }
   },
   computed: {

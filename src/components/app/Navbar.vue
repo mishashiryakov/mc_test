@@ -73,25 +73,58 @@
 
     <div class="search-block">
       <img class="icon" src="../../assets/icons/search.png" />
-      <router-link
-        to="/cart"
-      >
-        <img class="icon" src="../../assets/icons/cart .png" />
-      </router-link>
+
+        <img
+          class="icon"
+          src="../../assets/icons/cart .png"
+          @click="openCart = !openCart"
+        />
     </div>
+
+    <Drawer
+      :closable="false"
+      v-model="openCart"
+      width="548"
+    >
+        <div class="cart-header">
+          <p class="cart-title">Твоя корзина</p>
+          <div class="cart-close" @click="openCart = !openCart">
+            <img src="../../assets/icons/close.png" />
+          </div>
+
+        </div>
+        <div
+          v-if="getCartData.length"
+          class="item-cart-block"
+        >
+          <ItemInCart
+              v-for="(item, index) in cartItems"
+              :key="index"
+              :goods="[...item, index]"
+          />
+        </div>
+
+
+    </Drawer>
+
   </div>
 </template>
 
 <script>
-import { Dropdown, DropdownMenu, DropdownItem, Icon } from 'view-design'
+import { clothesData } from '../../data';
+import { Dropdown, DropdownMenu, DropdownItem, Icon, Drawer } from 'view-design';
+import ItemInCart from '@/components/app/ItemInCart';
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Navbar',
   components: {
-    Dropdown, DropdownMenu, DropdownItem, Icon
+    Dropdown, DropdownMenu, DropdownItem, Icon, Drawer, ItemInCart
   },
   data () {
     return {
       visible: false,
+      openCart: false,
       clothes: [
         {title: 'Футболки', url: '/goods', name: 'tshirt'},
         {title: 'Худи', url: '/goods', name: 'hoodie'},
@@ -120,6 +153,20 @@ export default {
       console.log('HI', name)
         this.$store.commit('setCurrentItem', name)
     }
+  },
+  computed: {
+    ...mapGetters([
+      'getCartData'
+    ]),
+    cartItems () {
+      console.log('computed')
+      if(this.$store.getters.getCartData) {
+        return this.$store.getters.getCartData
+      }
+    }
+  },
+  created() {
+    this.$store.commit('getDataFromStorage')
   }
 }
 </script>

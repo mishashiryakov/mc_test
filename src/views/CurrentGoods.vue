@@ -38,11 +38,16 @@
       </div>
       <div class="current-goods-info">
         <div class="current-goods-name">
+          <Breadcrumb class="breadcrumb">
+            <BreadcrumbItem to="/">Home</BreadcrumbItem>
+            <BreadcrumbItem to="/goods">{{currentGoods[0]}}</BreadcrumbItem>
+            <BreadcrumbItem>{{clothesData[currentGoods[0]][currentGoods[1]].name}}</BreadcrumbItem>
+          </Breadcrumb>
           <p class="current-goods-headline">
             {{clothesData[currentGoods[0]][currentGoods[1]].name}}
           </p>
           <p class="current-goods-price">
-            {{clothesData[currentGoods[0]][currentGoods[1]].price}}
+            {{clothesData[currentGoods[0]][currentGoods[1]].price + ' ₽'}}
           </p>
         </div>
         <div class="current-goods-size">
@@ -94,7 +99,10 @@
                 </div>
               </div>
 
-              <div v-on:click="addToCart" class="add-to-cart-button">
+              <div
+                v-on:click="addToCart(clothesData[currentGoods[0]][currentGoods[1]].category, clothesData[currentGoods[0]][currentGoods[1]].nameObj, counter, size, clothesData[currentGoods[0]][currentGoods[1]].price, clothesData[currentGoods[0]][currentGoods[1]].images[0])"
+                class="add-to-cart-button"
+              >
                 В корзину
               </div>
 
@@ -130,7 +138,7 @@
       <p class="offer-headline">Смотрите также</p>
       <div class="offer-goods">
         <div
-        class="goods-item"
+        class="offer-item"
         v-for="item in offers"
         :key="item.name"
         v-on:click="setCurrentGoods(item.category, item.nameObj)"
@@ -143,32 +151,61 @@
         </router-link>
 
         <p class="item-name-common">{{item.name}}</p>
-        <p class="price-common">{{item.price}}</p>
+        <p class="price-common">{{item.price + ' ₽'}}</p>
       </div>
       </div>
 
     </div>
 
     <div class="history-views">
+      <p class="history-headline">История просмотров</p>
+      <Car
+        :perPageCustom="[[480, 3], [768, 3]]"
+        :navigationEnabled="true"
+        navigationPrevLabel="‹"
+        navigationNextLabel="›"
+        :paginationEnabled="false"
+      >
 
+
+          <Slide
+             v-for="item in currentHistory"
+            :key="item[1]"
+          >
+            <div
+              class="history-slide"
+              v-on:click="setCurrentGoods(item[0], item[1])"
+            >
+              <img
+              class="img-slide"
+              :src="clothesData[item[0]][item[1]].images[0]"
+              />
+              <div class="history-short-info">
+                <p class="history-name">{{clothesData[item[0]][item[1]].name}}</p>
+                <p class="history-price">{{clothesData[item[0]][item[1]].price + ' ₽'}}</p>
+              </div>
+            </div>
+        </Slide>
+
+
+
+      </Car>
     </div>
   </div>
 </template>
 
 <script>
-import { Carousel, CarouselItem } from 'view-design';
+import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem } from 'view-design';
+import { Carousel as Car, Slide } from 'vue-carousel';
 import { clothesData } from '../data';
 
 export default {
   name: 'CurrentGoods',
   components: {
-    Carousel, CarouselItem
+    Carousel, CarouselItem, Breadcrumb, BreadcrumbItem, Car, Slide
   },
   data () {
-    console.log('data', clothesData)
     const offers = [clothesData['tshirt']['nikePro'], clothesData['hoodie']['sportswear'], clothesData['tshirt']['nike']];
-    console.log('offers', offers)
-
 
     return {
       counter: 1,
@@ -182,10 +219,15 @@ export default {
   },
   computed: {
     currentGoods () {
-      // return this.$store.getters.getCurrentGoods
       if(this.$store.getters.getCurrentGoods) {
-
         return this.$store.getters.getCurrentGoods
+      } else {
+        return 'nigeria';
+      }
+    },
+    currentHistory () {
+      if(this.$store.getters.getHistory) {
+        return this.$store.getters.getHistory
       } else {
         return 'nigeria';
       }
@@ -203,7 +245,6 @@ export default {
   },
   methods: {
     startComponent () {
-      console.log('start')
       document.querySelector('.img-preview').classList.add('active-img');
 
       const MAIN_IMG = document.querySelectorAll('.main-img');
@@ -235,6 +276,7 @@ export default {
     },
     selectSize (event) {
       this.size = `${event.currentTarget.innerHTML}`;
+      this.size = this.size.trim();
       document.querySelectorAll('.current-goods-size-button').forEach((el) => {
         el.classList.remove('active')
       })
@@ -254,11 +296,13 @@ export default {
         this.counter += 1;
       }
     },
-    addToCart () {
-
+    addToCart (category, item, quantity, size, price, image) {
+      this.$store.commit('addNewItem', [category, item, quantity, size, price, image])
     },
     setCurrentGoods (category, item) {
       this.$store.commit('setCurrentGoods', [category, item]);
+      this.$store.commit('addNewItemToHistory', [category, item]);
+      this.$store.commit('setCurrentItem', category)
       // this.counter = 1;
       // this.value1 = 0;
       // this.size = 'S';
@@ -273,7 +317,9 @@ export default {
 
   },
   created () {
-    this.$store.commit('getCurrentGoodsFromStorage')
+    this.$store.commit('getCurrentGoodsFromStorage');
+    this.$store.commit('getHistoryFromStorage');
+
   }
 }
 </script>

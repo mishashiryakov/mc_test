@@ -18,7 +18,7 @@ export default {
   computed: {
     items () {
       // console.log(this.$store.getters.getCartData.lenth)
-      if(this.$store.getters.getCartData.length > 0) {
+      if(this.$store.getters.getCartData) {
         return this.$store.getters.getCartData
       } else{
         return [{title: 'Корзина пуста'}]
