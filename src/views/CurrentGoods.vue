@@ -303,13 +303,6 @@ export default {
       this.$store.commit('setCurrentGoods', [category, item]);
       this.$store.commit('addNewItemToHistory', [category, item]);
       this.$store.commit('setCurrentItem', category)
-      // this.counter = 1;
-      // this.value1 = 0;
-      // this.size = 'S';
-      // this.color = '';
-      // this.$forceUpdate()
-      // Object.assign(this.$data, this.$options.data.call(this));
-      // this.startComponent()
       while (Math.max(document.body.scrollTop,document.documentElement.scrollTop) > 0) {
         window.scrollBy(0,-100);
       }
