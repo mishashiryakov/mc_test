@@ -34,3 +34,39 @@
     font-size: 15px;
     user-select: none;
 }
+
+
+
+
+@media (max-width: 1024px) {
+    .goods-wrapper {
+        padding: 0 50px;
+    }
+
+    .goods-item {
+        width: 24vw;
+    }
+}
+
+@media (max-width: 859px) {
+    .goods-item {
+        width: 34vw;
+    }
+}
+
+@media (max-width: 690px) {
+    .goods-item {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 560px) {
+    .goods-item {
+        width: 50vw;
+        
+    }
+
+    .goods-wrapper {
+        justify-content: center;
+    }
+}

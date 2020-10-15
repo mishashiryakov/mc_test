@@ -7,6 +7,7 @@
       >
         <img class="icon" src="../../assets/icons/nike-logo.png" />
       </router-link>
+
     </div>
 
     <div class="dropdown-block">
@@ -74,11 +75,23 @@
     <div class="search-block">
       <img class="icon" src="../../assets/icons/search.png" />
 
+      <!-- <div>
         <img
           class="icon"
-          src="../../assets/icons/cart .png"
+          src="../../assets/icons/cart.png"
           @click="openCart = !openCart"
         />
+      </div> -->
+
+      <div id="easynetshop-cart">
+        <div id="enscart_my_wrapper">
+          <div id="enscart_myimage_wrapper">
+            <img class="icon" @click="openCart = !openCart" src="../../assets/icons/cart.png">
+          </div>
+          <div id="enscart_my_counter_wrapper" v-if="getCartData.length"><span  id="easynetshop-cart-count"> {{getCartData.length}} </span></div>
+        </div>
+      </div>
+
     </div>
 
     <Drawer
@@ -111,7 +124,6 @@
 </template>
 
 <script>
-import { clothesData } from '../../data';
 import { Dropdown, DropdownMenu, DropdownItem, Icon, Drawer } from 'view-design';
 import ItemInCart from '@/components/app/ItemInCart';
 import { mapGetters } from 'vuex'
@@ -123,7 +135,6 @@ export default {
   },
   data () {
     return {
-      visible: false,
       openCart: false,
       clothes: [
         {title: 'Футболки', url: '/goods', name: 'tshirt'},
@@ -142,13 +153,8 @@ export default {
       name: null,
     }
   },
+
   methods: {
-    handleOpen () {
-      this.visible = true;
-    },
-    handleClose () {
-      this.visible = false;
-    },
     setCurrentItem (name) {
       console.log('HI', name)
         this.$store.commit('setCurrentItem', name)

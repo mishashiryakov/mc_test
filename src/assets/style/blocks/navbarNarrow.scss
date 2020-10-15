@@ -1,0 +1,48 @@
+.burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ivu-drawer-content {
+    top: 100px!important;
+}
+
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+    color: black!important; 
+    background: none!important;
+
+}
+
+.ivu-menu-submenu-title .ivu-menu-item {
+    color: black!important;
+    background: none!important;
+}
+
+.ivu-menu-submenu-title:hover {
+    color: black!important;
+}
+
+.ivu-menu-item:hover {
+    color: black!important;
+    background: none!important;
+
+}
+
+.menu-narrow {
+    color: black!important;
+
+}
+
+.ivu-menu-vertical.ivu-menu-light:after {
+    content: none!important;
+}
+
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):after {
+    background: black!important;
+}
+
+.router-link-custom {
+    color: black!important;
+}

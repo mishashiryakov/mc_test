@@ -18,11 +18,6 @@ const router = new VueRouter({
   routes: [
     ...routes,
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/About.vue')
-    },
-    {
       path: '/cart',
       name: 'cart',
       component: () => import('../views/Cart.vue')

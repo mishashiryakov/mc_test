@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.cart-close {
+  user-select: none;
+}
+
 .item-cart {
   height: 100%;
   display: flex;
@@ -13,6 +17,7 @@
 .img-cart {
   height: 100%;
   margin-right: 25px;
+  user-select: none;
 }
 
 .cart-left-block {
@@ -66,6 +71,7 @@
 
 .cart-delete {
   cursor: pointer;
+  user-select: none;
 }
 
 .cart-delete-img {

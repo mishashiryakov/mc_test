@@ -1,7 +1,7 @@
 <template>
-  <div class="">
+  <div class="narrow-layout">
     <NavbarNarrow />
-    <p>EMTY layout</p>
+    
     <router-view />
   </div>
 </template>
