@@ -22,74 +22,58 @@
       v-model="menu"
       width="100"
       :mask="false"
-
     >
-    <!-- <router-link
-      v-for="link in links"
-      :key="link.url"
-      tag="li"
-      active-class="active"
-      :to="link.url"
-      :exact="link.exact"
-    >
-    </router-link> -->
-
-  <Menu class="menu-narrow" :accordion="true" :open-names="['1']">
-
+      <Menu class="menu-narrow" :accordion="true" :open-names="['1']">
         <Submenu name="Одежда">
-            <template slot="title">Одежда</template>
-
+          <template slot="title">Одежда</template>
+          <MenuItem
+            v-for="item in clothes"
+            :name="item.title"
+            :key="item.title"
+          >
             <router-link
               class="router-link-custom"
               :to="item.url"
-              v-for="item in clothes"
-              :key="item.title"
             >
-              <MenuItem :name="item.title">
-                {{item.title}}
-              </MenuItem>
+              {{item.title}}
             </router-link>
-
+          </MenuItem>
         </Submenu>
 
         <Submenu name="Акссесуары">
-            <template slot="title">Акссесуары</template>
+          <template slot="title">Акссесуары</template>
+          <MenuItem :name="item.title"  v-for="item in accesories"
+          :key="item.title">
             <router-link
               class="router-link-custom"
               :to="item.url"
-              v-for="item in accesories"
-              :key="item.title"
             >
-              <MenuItem :name="item.title">
-                {{item.title}}
-              </MenuItem>
+            {{item.title}}
             </router-link>
-
+          </MenuItem>
         </Submenu>
 
         <Submenu name="Коллекции">
-            <template slot="title">Коллекции</template>
+          <template slot="title">Коллекции</template>
+
+          <MenuItem
+            :name="item.title"
+            v-for="item in collections"
+            :key="item.title"
+          >
             <router-link
-              class="router-link-custom"
-              :to="item.url"
-              v-for="item in collections"
-              :key="item.title"
+            class="router-link-custom"
+            :to="item.url"
             >
-              <MenuItem :name="item.title">
-                {{item.title}}
-              </MenuItem>
+            {{item.title}}
             </router-link>
+          </MenuItem>
         </Submenu>
-
-
-
-    </Menu>
-
-
+      </Menu>
     </Drawer>
 
 
-    <div id="easynetshop-cart">
+      <div id="easynetshop-cart">
         <div id="enscart_my_wrapper">
           <div id="enscart_myimage_wrapper">
             <img class="icon" @click="openCart = !openCart" src="../../assets/icons/cart.png">
@@ -99,11 +83,10 @@
       </div>
 
       <Drawer
-      :closable="false"
-      v-model="openCart"
-      width="548"
-
-    >
+        :closable="false"
+        v-model="openCart"
+        width="548"
+      >
         <div class="cart-header">
           <p class="cart-title">Твоя корзина</p>
           <div class="cart-close" @click="openCart = !openCart">
@@ -163,13 +146,11 @@ export default {
     }
   },
   mounted () {
-    console.log('mounted navbar narrow')
     document.querySelectorAll('.ivu-menu-item').forEach((el) => {
       el.addEventListener('click', (e) => {
-        console.log(e.currentTarget.innerHTML)
         let item;
 
-        switch (e.currentTarget.innerHTML.trim()) {
+        switch (e.currentTarget.firstChild.innerHTML.trim()) {
           case 'Футболки':
             item = 'tshirt';
             break;
@@ -186,15 +167,10 @@ export default {
     })
   },
   methods: {
-    navBtnClick () {
-      this.openCart = !this.openCart
-    },
     openMenu () {
-      console.log('123')
       this.menu = !this.menu;
     },
     setCurrentItem (name) {
-    console.log('HI', name)
       this.$store.commit('setCurrentItem', name)
     }
   },

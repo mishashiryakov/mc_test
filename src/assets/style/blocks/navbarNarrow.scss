@@ -5,7 +5,11 @@
     cursor: pointer;
 }
 
-.ivu-drawer-content {
+.burger-img {
+    user-select: none;
+}
+
+.ivu-drawer-content-no-mask {
     top: 100px!important;
 }
 
