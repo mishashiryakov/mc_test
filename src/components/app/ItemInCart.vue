@@ -12,7 +12,7 @@
                 <div
                   id="minus"
                   class="quantity-icon-cart"
-                  v-on:click="setCounter(goods[6], $event)"
+                  v-on:click="setCounter(goods[6], $event, '-')"
                 >
                   <img src="@/assets/icons/minus.png" />
                 </div>
@@ -23,7 +23,7 @@
 
                 <div
                   class="quantity-icon-cart"
-                  v-on:click="setCounter(goods[6], $event)"
+                  v-on:click="setCounter(goods[6], $event, '+')"
                 >
                   <img src="@/assets/icons/plus.png" />
                 </div>
@@ -36,10 +36,14 @@
           <div class="cart-delete">
             <img
               class="cart-delete-img"
-              src="@/assets/icons/close.png"
+              src="@/assets/icons/close.svg"
               v-on:click="deleteFromCart(goods[6])"
             />
           </div>
+
+          <p class="cart-price">
+            {{this.goods[4] * this.goods[2] + ' ₽'}}
+          </p>
 
         </div>
       </div>
@@ -50,11 +54,8 @@ import { clothesData } from '../../data';
 export default {
   name: 'itemInCart',
   data () {
-
-    // const counter = this.goods[2]
     return {
-      clothesData,
-      counter: this.goods[2]
+      clothesData
     }
   },
   props: {
@@ -66,26 +67,39 @@ export default {
     }
   },
   methods: {
-    setCounter (index, event) {
-      if (true) {
-        this.counter == 1 ? '1' : this.counter -= 1;
+    setCounter (index, event, symbol) {
+      if (this.goods[2] == 1 && symbol == '-') {
+
       } else {
-        this.counter += 1;
+        this.price(symbol);
       }
+
       this.$store.commit('setCounterInCart', [index, event.currentTarget.id]);
 
     },
-    destroy () {
-      this.$destroy();
-    },
     deleteFromCart (index) {
+      this.price('-', this.goods[2]);
       this.$store.commit('deleteItemFromCart', index);
 
+    },
+    price (symbol, counter) {
+    let count;
+    if (counter) {
+      count = counter;
+    } else {
+      count = 1;
+    }
+    this.$emit('price', {
+      price: this.goods[4] * count,
+      symbol
+      })
     }
   },
   computed: {
 
-  }
-
+  },
+  created () {
+    this.price('+', this.goods[2]);
+  },
 }
 </script>

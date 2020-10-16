@@ -5,7 +5,7 @@
       to="/goods"
     >
       <div class="back-to-category">
-        <img class="back-icon" src="../assets/icons/back.png">
+        <img class="back-icon" src="../assets/icons/back.svg">
       </div>
     </router-link>
 

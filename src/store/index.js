@@ -82,20 +82,16 @@ export default new Vuex.Store({
       }
     },
     setCounterInCart (state, payload) {
-      console.log(payload)
       if (payload[1]) {
-        console.log('counter', state.items[payload[0]][2])
         if(!(state.items[payload[0]][2] === 1)) {
           const newItem = state.items[payload[0]];
           newItem[2] -= 1;
-          console.log(newItem)
           state.items.splice(payload[0], 1, newItem)
           window.localStorage.setItem('cart' , JSON.stringify(state.items));
         }
       } else {
         const newItem = state.items[payload[0]];
         newItem[2] += 1;
-        console.log(newItem)
         state.items.splice(payload[0], 1, newItem)
         window.localStorage.setItem('cart' , JSON.stringify(state.items));
       }

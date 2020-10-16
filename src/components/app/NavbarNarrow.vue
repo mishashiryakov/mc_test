@@ -1,23 +1,21 @@
 <template>
   <div class="nav-wrapper">
 
-    <div
-        @click="openMenu"
-        class="burger"
-    >
-      <img src="../../assets/icons/burger.png" class="burger-img">
+    <div class="burger hamburger hamburger--squeeze">
+      <div class="hamburger-box">
+        <div class="hamburger-inner"></div>
+      </div>
     </div>
 
     <div class="logo">
       <router-link
         to="/"
       >
-        <img class="icon" src="../../assets/icons/nike-logo.png" />
+        <img class="icon" src="../../assets/icons/nike-logo.svg" />
       </router-link>
     </div>
 
     <Drawer
-      title="Basic Drawer"
       placement="left"
       v-model="menu"
       width="100"
@@ -76,7 +74,7 @@
       <div id="easynetshop-cart">
         <div id="enscart_my_wrapper">
           <div id="enscart_myimage_wrapper">
-            <img class="icon" @click="openCart = !openCart" src="../../assets/icons/cart.png">
+            <img class="icon" @click="openCart = !openCart" src="../../assets/icons/cart.svg">
           </div>
           <div id="enscart_my_counter_wrapper" v-if="getCartData.length"><span  id="easynetshop-cart-count"> {{getCartData.length}} </span></div>
         </div>
@@ -85,12 +83,12 @@
       <Drawer
         :closable="false"
         v-model="openCart"
-        width="548"
+        :width="this.width"
       >
         <div class="cart-header">
           <p class="cart-title">Твоя корзина</p>
           <div class="cart-close" @click="openCart = !openCart">
-            <img src="../../assets/icons/close.png" />
+            <img src="../../assets/icons/close.svg" />
           </div>
 
         </div>
@@ -99,10 +97,25 @@
           class="item-cart-block"
         >
           <ItemInCart
-              v-for="(item, index) in cartItems"
-              :key="index"
-              :goods="[...item, index]"
+            @price="getTotalPrice"
+            v-for="(item, index) in cartItems"
+            :key="index"
+            :goods="[...item, index]"
           />
+        </div>
+
+        <div class="total-sum-block">
+          <div class="total">
+            <p class="total-sum">
+              Предварительный итог:
+            </p>
+            <p class="total-price">{{this.preTotalSum + " ₽"}}</p>
+          </div>
+
+
+          <div class="checkout-button">
+            Оформить заказ
+          </div>
         </div>
 
 
@@ -143,6 +156,8 @@ export default {
         {title: 'Zoom', url: '/goods', name: 'zoom'},
       ],
       name: null,
+      width: null,
+      preTotalSum: 0,
     }
   },
   mounted () {
@@ -163,7 +178,19 @@ export default {
         }
         this.setCurrentItem(item)
         this.menu = !this.menu;
+        document.querySelector('.hamburger--squeeze').classList.remove('is-active')
       })
+    })
+
+    document.querySelector('.hamburger--squeeze').addEventListener('click', (event) => {
+      this.openMenu()
+      const burger = event.currentTarget.classList;
+      if (!burger.contains('is-active')) {
+        burger.add('is-active')
+      } else {
+        burger.remove('is-active')
+      }
+
     })
   },
   methods: {
@@ -172,6 +199,23 @@ export default {
     },
     setCurrentItem (name) {
       this.$store.commit('setCurrentItem', name)
+    },
+    updateWidth() {
+      if (window.innerWidth <= 548) {
+        this.width = 100;
+      } else {
+        this.width = 548;
+      }
+
+    },
+    getTotalPrice (price) {
+      if (price.symbol == '+') {
+        this.preTotalSum += price.price
+      }
+
+      if (price.symbol == '-') {
+        this.preTotalSum -= price.price
+      }
     }
   },
   computed: {
@@ -179,14 +223,15 @@ export default {
     'getCartData'
   ]),
   cartItems () {
-    console.log('computed')
     if(this.$store.getters.getCartData) {
       return this.$store.getters.getCartData
     }
    }
   },
   created() {
-    this.$store.commit('getDataFromStorage')
+    this.$store.commit('getDataFromStorage');
+    window.addEventListener('resize', this.updateWidth);
+    this.updateWidth();
   }
 }
 </script>

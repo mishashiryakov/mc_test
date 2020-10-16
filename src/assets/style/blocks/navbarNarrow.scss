@@ -1,13 +1,4 @@
-.burger {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
 
-.burger-img {
-    user-select: none;
-}
 
 .ivu-drawer-content-no-mask {
     top: 100px!important;
@@ -22,6 +13,11 @@
 .ivu-menu-submenu-title .ivu-menu-item {
     color: black!important;
     background: none!important;
+}
+
+.ivu-menu-submenu-title {
+    font-weight: 700!important;
+    font-size: 20px!important;
 }
 
 .ivu-menu-submenu-title:hover {
@@ -49,4 +45,10 @@
 
 .router-link-custom {
     color: black!important;
+    font-size: 17px!important;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    width: 30px!important;
+    height: 3px!important; 
 }

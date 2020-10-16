@@ -5,7 +5,7 @@
       <router-link
         to="/"
       >
-        <img class="icon" src="../../assets/icons/nike-logo.png" />
+        <img class="icon" src="../../assets/icons/nike-logo.svg" />
       </router-link>
 
     </div>
@@ -73,7 +73,7 @@
     </div>
 
     <div class="search-block">
-      <img class="icon" src="../../assets/icons/search.png" />
+      <img class="icon" src="../../assets/icons/search.svg" />
 
       <!-- <div>
         <img
@@ -86,7 +86,7 @@
       <div id="easynetshop-cart">
         <div id="enscart_my_wrapper">
           <div id="enscart_myimage_wrapper">
-            <img class="icon" @click="openCart = !openCart" src="../../assets/icons/cart.png">
+            <img class="icon" @click="openCart = !openCart" src="../../assets/icons/cart.svg">
           </div>
           <div id="enscart_my_counter_wrapper" v-if="getCartData.length"><span  id="easynetshop-cart-count"> {{getCartData.length}} </span></div>
         </div>
@@ -102,20 +102,39 @@
         <div class="cart-header">
           <p class="cart-title">Твоя корзина</p>
           <div class="cart-close" @click="openCart = !openCart">
-            <img src="../../assets/icons/close.png" />
+            <img src="../../assets/icons/close.svg" />
           </div>
 
         </div>
+
         <div
           v-if="getCartData.length"
           class="item-cart-block"
         >
           <ItemInCart
-              v-for="(item, index) in cartItems"
-              :key="index"
-              :goods="[...item, index]"
+            @price="getTotalPrice"
+            v-for="(item, index) in cartItems"
+            :key="index"
+            :goods="[...item, index]"
           />
+
         </div>
+
+        <div class="total-sum-block">
+          <div class="total">
+            <p class="total-sum">
+              Предварительный итог:
+            </p>
+            <p class="total-price">{{this.preTotalSum + " ₽"}}</p>
+          </div>
+
+
+          <div class="checkout-button">
+            Оформить заказ
+          </div>
+        </div>
+
+
 
 
     </Drawer>
@@ -151,13 +170,22 @@ export default {
         {title: 'Zoom', url: '/goods', name: 'zoom'},
       ],
       name: null,
+      preTotalSum: 0,
     }
   },
 
   methods: {
     setCurrentItem (name) {
-      console.log('HI', name)
         this.$store.commit('setCurrentItem', name)
+    },
+    getTotalPrice (price) {
+      if (price.symbol == '+') {
+        this.preTotalSum += price.price
+      }
+
+      if (price.symbol == '-') {
+        this.preTotalSum -= price.price
+      }
     }
   },
   computed: {
@@ -165,14 +193,13 @@ export default {
       'getCartData'
     ]),
     cartItems () {
-      console.log('computed')
       if(this.$store.getters.getCartData) {
         return this.$store.getters.getCartData
       }
     }
   },
   created() {
-    this.$store.commit('getDataFromStorage')
-  }
+    this.$store.commit('getDataFromStorage');
+  },
 }
 </script>

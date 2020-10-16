@@ -165,12 +165,9 @@ export default {
     }
   },
   mounted () {
-    console.log('mounted current goods')
     this.startComponent()
   },
   updated () {
-    console.log('updated')
-
     document.querySelectorAll('.img-preview').forEach(
       (el) => el.classList.remove('active-img')
     )
@@ -200,7 +197,15 @@ export default {
         el.currentTarget.classList.add('active')
       });
 
+      document.querySelector('.add-to-cart-button').addEventListener('touchstart', (el) => {
+        el.currentTarget.classList.add('active')
+      });
+
       document.querySelector('.add-to-cart-button').addEventListener('mouseup', (el) => {
+        el.currentTarget.classList.remove('active')
+      });
+
+      document.querySelector('.add-to-cart-button').addEventListener('touchend', (el) => {
         el.currentTarget.classList.remove('active')
       });
     },

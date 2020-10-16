@@ -9,6 +9,7 @@
       >
       {{ item.title }}</li>
     </ul>
+
   </div>
 </template>
 
@@ -17,7 +18,6 @@ export default {
   name: 'cart',
   computed: {
     items () {
-      // console.log(this.$store.getters.getCartData.lenth)
       if(this.$store.getters.getCartData) {
         return this.$store.getters.getCartData
       } else{
