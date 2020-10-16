@@ -76,7 +76,6 @@
 </template>
 
 <script>
-// import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem } from 'view-design';
 import { Carousel as Car, Slide } from 'vue-carousel';
 import { clothesData } from '../data';
 import CurrentGoodsComponent from '@/components/app/CurrentGoodsComponent';

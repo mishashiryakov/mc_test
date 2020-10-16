@@ -74,19 +74,10 @@
 
     <div class="search-block">
       <img class="icon" src="../../assets/icons/search.svg" />
-
-      <!-- <div>
-        <img
-          class="icon"
-          src="../../assets/icons/cart.png"
-          @click="openCart = !openCart"
-        />
-      </div> -->
-
       <div id="easynetshop-cart">
         <div id="enscart_my_wrapper">
           <div id="enscart_myimage_wrapper">
-            <img class="icon" @click="openCart = !openCart" src="../../assets/icons/cart.svg">
+            <img class="cart-icon" @click="openCart = !openCart" src="../../assets/icons/cart.svg">
           </div>
           <div id="enscart_my_counter_wrapper" v-if="getCartData.length"><span  id="easynetshop-cart-count"> {{getCartData.length}} </span></div>
         </div>
@@ -120,7 +111,10 @@
 
         </div>
 
-        <div class="total-sum-block">
+        <div
+          class="total-sum-block"
+          v-if="getCartData.length"
+        >
           <div class="total">
             <p class="total-sum">
               Предварительный итог:
@@ -133,6 +127,12 @@
             Оформить заказ
           </div>
         </div>
+
+        <p
+          v-if="!getCartData.length"
+        >
+          Ваша корзина пуста
+        </p>
 
 
 

@@ -45,6 +45,11 @@
     cursor: pointer;
 }
 
+.cart-icon {
+    height: 28px;
+    cursor: pointer;
+}
+
 .logo {
     cursor: pointer;
     user-select: none;
@@ -81,7 +86,7 @@
     z-index: 1140;
 }
   #enscart_my_wrapper img {
-    height: 80%;
+    
     width: auto;
     padding-top: 8px;
 }
@@ -102,4 +107,8 @@
     justify-content: center;
     align-items: center;
     user-select: none;
+}
+
+.ivu-select-dropdown {
+    box-shadow: 0px 9px 68px -26px rgba(0,0,0,0.75)!important;
 }

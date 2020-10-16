@@ -74,7 +74,7 @@
       <div id="easynetshop-cart">
         <div id="enscart_my_wrapper">
           <div id="enscart_myimage_wrapper">
-            <img class="icon" @click="openCart = !openCart" src="../../assets/icons/cart.svg">
+            <img class="cart-icon" @click="openCart = !openCart" src="../../assets/icons/cart.svg">
           </div>
           <div id="enscart_my_counter_wrapper" v-if="getCartData.length"><span  id="easynetshop-cart-count"> {{getCartData.length}} </span></div>
         </div>
@@ -104,7 +104,10 @@
           />
         </div>
 
-        <div class="total-sum-block">
+        <div
+          class="total-sum-block"
+          v-if="getCartData.length"
+        >
           <div class="total">
             <p class="total-sum">
               Предварительный итог:
@@ -117,6 +120,12 @@
             Оформить заказ
           </div>
         </div>
+
+        <p
+          v-if="!getCartData.length"
+        >
+          Ваша корзина пуста
+        </p>
 
 
     </Drawer>
@@ -182,10 +191,14 @@ export default {
       })
     })
 
+    document.querySelector('.ivu-icon-ios-close').addEventListener('click', () => {
+      document.querySelector('.hamburger--squeeze').classList.remove('is-active')
+    })
+
     document.querySelector('.hamburger--squeeze').addEventListener('click', (event) => {
       this.openMenu()
       const burger = event.currentTarget.classList;
-      if (!burger.contains('is-active')) {
+      if (this.menu) {
         burger.add('is-active')
       } else {
         burger.remove('is-active')

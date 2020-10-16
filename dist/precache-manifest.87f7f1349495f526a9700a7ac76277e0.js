@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "663b03dcd18b62dffdc8",
-    "url": "/css/app.6e23fd48.css"
+    "revision": "a1fb2831c716075a6628",
+    "url": "/css/app.0c1219da.css"
   },
   {
     "revision": "30ad844e9b3945ac7d5d",
@@ -20,6 +20,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fonts/ionicons.d535a25a.ttf"
   },
   {
+    "revision": "3f3794655f2a3bba538b8a87238c5762",
+    "url": "/img/back.3f379465.svg"
+  },
+  {
+    "revision": "9ee263ace311a8ccb03f45aa4218dc8e",
+    "url": "/img/cart.9ee263ac.svg"
+  },
+  {
     "revision": "71f46b89bd166a6e170c7f9124b812d8",
     "url": "/img/casual-back.71f46b89.jpg"
   },
@@ -30,6 +38,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "1e70a92c7a607208ced7061467f9c25b",
     "url": "/img/casual-front.1e70a92c.jpg"
+  },
+  {
+    "revision": "f4a4b3240ec0616f18fff7f73b4ffd0e",
+    "url": "/img/close.f4a4b324.svg"
   },
   {
     "revision": "17f21f70c19fb633da0c57bef5247f9c",
@@ -84,6 +96,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/nike-front.1efdb50e.jpg"
   },
   {
+    "revision": "bb35a18e09d9f69f083ac29735078bef",
+    "url": "/img/nike-logo.bb35a18e.svg"
+  },
+  {
     "revision": "fe74cf51209a3333bca4978c5bb98a00",
     "url": "/img/nikepro-back-near.fe74cf51.jpg"
   },
@@ -128,6 +144,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/pegasus3.a79ab0be.jpg"
   },
   {
+    "revision": "71031777f80dfd971bd97f5a70ef38d7",
+    "url": "/img/search.71031777.svg"
+  },
+  {
     "revision": "247802287aec87bf50170c48839662cf",
     "url": "/img/sportswear-back-near.24780228.jpg"
   },
@@ -156,28 +176,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/tempo3.7ebd6ab8.jpg"
   },
   {
-    "revision": "11e1eeda8357198d0cf3a4d771da0847",
+    "revision": "3180784b6f63adcf11a4fc3bdad96499",
     "url": "/index.html"
   },
   {
-    "revision": "663b03dcd18b62dffdc8",
-    "url": "/js/app.1b6f48a3.js"
+    "revision": "a1fb2831c716075a6628",
+    "url": "/js/app.523d168e.js"
   },
   {
-    "revision": "c0a5c395edcf3b2fba58",
-    "url": "/js/chunk-166407d1.bf452e64.js"
+    "revision": "f82d4496a310aecece9a",
+    "url": "/js/chunk-25636708.3f06f675.js"
   },
   {
-    "revision": "dada87789dc6b716173a",
-    "url": "/js/chunk-25636708.ed2f33f1.js"
+    "revision": "0a0b441bf1d6c7552339",
+    "url": "/js/chunk-2d0de6bb.83efb98b.js"
   },
   {
-    "revision": "2a68021c5624ef4d3628",
-    "url": "/js/chunk-2d0de6bb.0be188b9.js"
+    "revision": "9fe046dd73452f82c96c",
+    "url": "/js/chunk-2d2102cc.b853dc73.js"
   },
   {
-    "revision": "32cf0191ac7be747695b",
-    "url": "/js/chunk-2d2102cc.ed7674ee.js"
+    "revision": "90c04d7f79a6b2404431",
+    "url": "/js/chunk-2f434f55.5aaafcaf.js"
   },
   {
     "revision": "30ad844e9b3945ac7d5d",

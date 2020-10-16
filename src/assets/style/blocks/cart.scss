@@ -138,3 +138,14 @@
   font-weight: 700;
   font-size: 15px;
 }
+
+
+@media (max-width: 390px) {
+  .quantity-item-in-cart {
+    width: 100px;
+  }
+
+  .ivu-drawer-body {
+    padding: 15px !important;
+  } 
+}
