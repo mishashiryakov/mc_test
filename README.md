@@ -22,7 +22,7 @@ npm run lint
 ## Project description
 ### Deploy
 ```
-<https://mc-test.netlify.app>
+https://mc-test.netlify.app
 ```
 ### Технологии
 ```
@@ -30,8 +30,8 @@ Vue.js, Vuex, VueRouter, Vue CLI, SCSS, JavaScript, HTML, ESLint, Git, Babel
 
 Библиотеки UI копмонентов:
 
-1. Iview - <https://www.iviewui.com/docs/introduce-en>
-2. Vue carousel - <https://ssense.github.io/vue-carousel/>
+1. Iview - https://www.iviewui.com/docs/introduce-en
+2. Vue carousel - https://ssense.github.io/vue-carousel/
 ```
 ### Функционал
 ```
@@ -57,6 +57,7 @@ Vue.js, Vuex, VueRouter, Vue CLI, SCSS, JavaScript, HTML, ESLint, Git, Babel
 7. Кнопка добавить в корзину.
 8. Блок рекомендаций(статичный, мало товаров, не было смысла реализовывать случайный рендер). При нажатии открывает товар.
 9. История просмотров. Просмотренные товары сохранаяются в local storage и выводятся в карусель. При нажатии открывает товар.
+10. Футболка Nike Pro, её нет в наличии, в корзину добавить нельзя.
 ```
 ```
 Блок корзины:
