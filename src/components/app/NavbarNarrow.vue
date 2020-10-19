@@ -74,7 +74,7 @@
       <div id="easynetshop-cart">
         <div id="enscart_my_wrapper">
           <div id="enscart_myimage_wrapper">
-            <img class="cart-icon" @click="openCart = !openCart" src="../../assets/icons/cart.svg">
+            <img class="cart-icon" @click="openCartFunc" src="../../assets/icons/cart.svg">
           </div>
           <div id="enscart_my_counter_wrapper" v-if="getCartData.length"><span  id="easynetshop-cart-count"> {{getCartData.length}} </span></div>
         </div>
@@ -229,6 +229,15 @@ export default {
       if (price.symbol == '-') {
         this.preTotalSum -= price.price
       }
+    },
+    openCartFunc () {
+      this.preTotalSum = 0;
+      this.openCart = !this.openCart;
+      setTimeout(() => {
+        document.querySelectorAll('.cart-price').forEach(el => {
+          this.preTotalSum += +el.innerHTML.substring(0, el.innerHTML.length - 2).trim()
+        })
+      }, 10)
     }
   },
   computed: {

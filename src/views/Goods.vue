@@ -36,11 +36,17 @@ export default {
     setCurrentGoods (category, item) {
       this.$store.commit('setCurrentGoods', [category, item]);
       this.$store.commit('addNewItemToHistory', [category, item]);
+      while (Math.max(document.body.scrollTop,document.documentElement.scrollTop) > 0) {
+        window.scrollBy(0,-100);
+      }
     }
   },
   computed: {
     currentItem () {
       if(this.$store.getters.getCurrentItem) {
+        while (Math.max(document.body.scrollTop,document.documentElement.scrollTop) > 0) {
+          window.scrollBy(0,-100);
+        }
         return this.$store.getters.getCurrentItem
       } else {
         return 'tshirt';

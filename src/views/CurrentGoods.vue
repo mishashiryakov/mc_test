@@ -10,7 +10,6 @@
     </router-link>
 
     <CurrentGoodsComponent
-
       :currentGoods="currentGoods"
       :key="JSON.stringify(currentGoods)"
     />
