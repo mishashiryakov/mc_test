@@ -10,12 +10,11 @@ export default {
   data () {
     return {
       items: [
-          {title: 'Худи'},
-          {title: 'Майка'},
-          {title: 'Джинсы'}
-        ]
+        { title: 'Худи' },
+        { title: 'Майка' },
+        { title: 'Джинсы' }
+      ]
     }
-
   },
   methods: {
     addItem (item) {

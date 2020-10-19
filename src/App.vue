@@ -15,28 +15,28 @@ export default {
     NarrowLayout, MainLayout
   },
   computed: {
-  layout() {
-    if (this.width < 800) {
-      return 'narrow-layout'
-    } else {
+    layout () {
+      if (this.width < 800) {
+        return 'narrow-layout'
+      } else {
         return 'main-layout'
       }
     }
   },
   data () {
-      return {
-        width: null
-      }
+    return {
+      width: null
+    }
   },
-  created() {
-    window.addEventListener('resize', this.updateWidth);
+  created () {
+    window.addEventListener('resize', this.updateWidth)
     this.updateWidth()
   },
   methods: {
-    updateWidth() {
-      this.width = window.innerWidth;
-    },
-  },
+    updateWidth () {
+      this.width = window.innerWidth
+    }
+  }
 }
 </script>
 

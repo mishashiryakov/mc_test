@@ -31,7 +31,6 @@
         </div>
         </div>
 
-
         <div class="cart-price-block">
           <div class="cart-delete">
             <img
@@ -50,7 +49,7 @@
 </template>
 
 <script>
-import { clothesData } from '../../data';
+import { clothesData } from '../../data'
 export default {
   name: 'itemInCart',
   data () {
@@ -61,37 +60,35 @@ export default {
   props: {
     goods: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     }
   },
   methods: {
     setCounter (index, event, symbol) {
-      if (this.goods[2] == 1 && symbol == '-') {
+      if (this.goods[2] === 1 && symbol === '-') {
 
       } else {
-        this.price(symbol);
+        this.price(symbol)
       }
 
-      this.$store.commit('setCounterInCart', [index, event.currentTarget.id]);
-
+      this.$store.commit('setCounterInCart', [index, event.currentTarget.id])
     },
     deleteFromCart (index) {
-      this.price('-', this.goods[2]);
-      this.$store.commit('deleteItemFromCart', index);
-
+      this.price('-', this.goods[2])
+      this.$store.commit('deleteItemFromCart', index)
     },
     price (symbol, counter) {
-    let count;
-    if (counter) {
-      count = counter;
-    } else {
-      count = 1;
-    }
-    this.$emit('price', {
-      price: this.goods[4] * count,
-      symbol
+      let count
+      if (counter) {
+        count = counter
+      } else {
+        count = 1
+      }
+      this.$emit('price', {
+        price: this.goods[4] * count,
+        symbol
       })
     }
   },
@@ -99,7 +96,7 @@ export default {
 
   },
   created () {
-    this.price('+', this.goods[2]);
-  },
+    this.price('+', this.goods[2])
+  }
 }
 </script>

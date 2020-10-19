@@ -18,10 +18,10 @@ export default {
   name: 'cart',
   computed: {
     items () {
-      if(this.$store.getters.getCartData) {
+      if (this.$store.getters.getCartData) {
         return this.$store.getters.getCartData
-      } else{
-        return [{title: 'Корзина пуста'}]
+      } else {
+        return [{ title: 'Корзина пуста' }]
       }
     }
   },

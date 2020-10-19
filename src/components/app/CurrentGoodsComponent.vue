@@ -53,7 +53,10 @@
           </p>
         </div>
 
-        <div class="current-goods-size">
+        <div
+          class="current-goods-size"
+          v-if="clothesData[currentGoods[0]][currentGoods[1]].existence"
+        >
           <p>
             Размер:
           </p>
@@ -112,6 +115,13 @@
             </div>
         </div>
 
+        <div
+          class="current-goods-size"
+          v-if="!clothesData[currentGoods[0]][currentGoods[1]].existence"
+        >
+          <p class="no-available">Товар закончился</p>
+        </div>
+
         <div class="current-goods-description-block">
           <p class="current-goods-description">
             {{clothesData[currentGoods[0]][currentGoods[1]].description}}
@@ -132,15 +142,14 @@
             {{clothesData[currentGoods[0]][currentGoods[1]].care}}
           </p>
 
-
         </div>
       </div>
   </div>
 </template>
 
 <script>
-import { clothesData } from '../../data';
-import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem } from 'view-design';
+import { clothesData } from '../../data'
+import { Carousel, CarouselItem, Breadcrumb, BreadcrumbItem } from 'view-design'
 
 export default {
   name: 'CurrentGoodsComponent',
@@ -153,13 +162,13 @@ export default {
       value1: 0,
       size: 'S',
       color: '',
-      counter: 1,
+      counter: 1
     }
   },
   props: {
     currentGoods: {
       type: Array,
-      default() {
+      default () {
         return []
       }
     }
@@ -175,53 +184,55 @@ export default {
   },
   methods: {
     startComponent () {
-      document.querySelector('.img-preview').classList.add('active-img');
+      document.querySelector('.img-preview').classList.add('active-img')
 
-      const MAIN_IMG = document.querySelectorAll('.main-img');
+      const MAIN_IMG = document.querySelectorAll('.main-img')
       document.querySelector('.ivu-carousel-list').addEventListener('mousemove', e => {
-          const x = e.clientX - document.querySelector('.ivu-carousel-list').getBoundingClientRect().left;
-          const y = e.clientY - document.querySelector('.ivu-carousel-list').getBoundingClientRect().top;
-          MAIN_IMG[this.value1].style.transformOrigin = `${x}px ${y}px`;
-          MAIN_IMG[this.value1].style.transform = "scale(2)";
+        const x = e.clientX - document.querySelector('.ivu-carousel-list').getBoundingClientRect().left
+        const y = e.clientY - document.querySelector('.ivu-carousel-list').getBoundingClientRect().top
+        MAIN_IMG[this.value1].style.transformOrigin = `${x}px ${y}px`
+        MAIN_IMG[this.value1].style.transform = 'scale(2)'
       })
 
       document.querySelector('.ivu-carousel-list').addEventListener('mouseleave', () => {
-          MAIN_IMG[this.value1].style.transformOrigin = "center center";
-          MAIN_IMG[this.value1].style.transform = "scale(1)";
+        MAIN_IMG[this.value1].style.transformOrigin = 'center center'
+        MAIN_IMG[this.value1].style.transform = 'scale(1)'
       })
 
-      document.querySelector('.current-goods-size-button').classList.add('active');
-      document.querySelector('.current-goods-color-button').classList.add('active');
+      if (clothesData[this.currentGoods[0]][this.currentGoods[1]].existence) {
+        document.querySelector('.current-goods-size-button').classList.add('active')
+        document.querySelector('.current-goods-color-button').classList.add('active')
 
-      document.querySelector('.add-to-cart-button').addEventListener('mousedown', (el) => {
-        el.currentTarget.classList.add('active')
-      });
+        document.querySelector('.add-to-cart-button').addEventListener('mousedown', (el) => {
+          el.currentTarget.classList.add('active')
+        })
 
-      document.querySelector('.add-to-cart-button').addEventListener('touchstart', (el) => {
-        el.currentTarget.classList.add('active')
-      });
+        document.querySelector('.add-to-cart-button').addEventListener('touchstart', (el) => {
+          el.currentTarget.classList.add('active')
+        })
 
-      document.querySelector('.add-to-cart-button').addEventListener('mouseup', (el) => {
-        el.currentTarget.classList.remove('active')
-      });
+        document.querySelector('.add-to-cart-button').addEventListener('mouseup', (el) => {
+          el.currentTarget.classList.remove('active')
+        })
 
-      document.querySelector('.add-to-cart-button').addEventListener('touchend', (el) => {
-        el.currentTarget.classList.remove('active')
-      });
+        document.querySelector('.add-to-cart-button').addEventListener('touchend', (el) => {
+          el.currentTarget.classList.remove('active')
+        })
+      }
     },
     setValue (event) {
-      this.value1 = +event.target.id;
+      this.value1 = +event.target.id
     },
     selectSize (event) {
-      this.size = `${event.currentTarget.innerHTML}`;
-      this.size = this.size.trim();
+      this.size = `${event.currentTarget.innerHTML}`
+      this.size = this.size.trim()
       document.querySelectorAll('.current-goods-size-button').forEach((el) => {
         el.classList.remove('active')
       })
       event.currentTarget.classList.add('active')
     },
     selectColor (event) {
-      this.color = `${event.currentTarget.innerHTML}`;
+      this.color = `${event.currentTarget.innerHTML}`
       document.querySelectorAll('.current-goods-color-button').forEach((el) => {
         el.classList.remove('active')
       })
@@ -229,14 +240,16 @@ export default {
     },
     setCounter (event) {
       if (event.currentTarget.id) {
-        this.counter == 1 ? '1' : this.counter -= 1;
+        if (this.counter !== 1) {
+          this.counter -= 1
+        }
       } else {
-        this.counter += 1;
+        this.counter += 1
       }
     },
     addToCart (category, item, quantity, size, price, image) {
       this.$store.commit('addNewItem', [category, item, quantity, size, price, image])
-    },
+    }
   }
 }
 </script>

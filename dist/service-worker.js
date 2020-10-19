@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.24043a4bafb22012c2e01e158c5ef6d2.js"
+  "/precache-manifest.9d626f88a6ff9d967effe7772958ff7c.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "vue_crm_vladilen"});
+workbox.core.setCacheNameDetails({prefix: "vue_nike_test"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {

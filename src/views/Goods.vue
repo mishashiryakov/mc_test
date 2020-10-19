@@ -23,37 +23,37 @@
 </template>
 
 <script>
-import { clothesData } from '../data';
+import { clothesData } from '../data'
 
 export default {
   name: 'goods',
-  data() {
+  data () {
     return {
       clothesData
     }
   },
   methods: {
     setCurrentGoods (category, item) {
-      this.$store.commit('setCurrentGoods', [category, item]);
-      this.$store.commit('addNewItemToHistory', [category, item]);
-      while (Math.max(document.body.scrollTop,document.documentElement.scrollTop) > 0) {
-        window.scrollBy(0,-100);
+      this.$store.commit('setCurrentGoods', [category, item])
+      this.$store.commit('addNewItemToHistory', [category, item])
+      while (Math.max(document.body.scrollTop, document.documentElement.scrollTop) > 0) {
+        window.scrollBy(0, -100)
       }
     }
   },
   computed: {
     currentItem () {
-      if(this.$store.getters.getCurrentItem) {
-        while (Math.max(document.body.scrollTop,document.documentElement.scrollTop) > 0) {
-          window.scrollBy(0,-100);
+      if (this.$store.getters.getCurrentItem) {
+        while (Math.max(document.body.scrollTop, document.documentElement.scrollTop) > 0) {
+          window.scrollBy(0, -100)
         }
         return this.$store.getters.getCurrentItem
       } else {
-        return 'tshirt';
+        return 'tshirt'
       }
     }
   },
-  created() {
+  created () {
     this.$store.commit('getCurrentItemFromStorage')
   }
 }

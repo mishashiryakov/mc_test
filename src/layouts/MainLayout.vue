@@ -5,7 +5,6 @@
   </div>
 </template>
 
-
 <script>
 
 import Navbar from '@/components/app/Navbar'

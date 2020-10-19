@@ -1,2 +1,2 @@
 (window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-25636708"],{ae49:function(t,e,n){t.exports=n.p+"img/main.e21cb69b.jpg"},bb51:function(t,e,n){"use strict";n.r(e);var i=function(){var t=this,e=t.$createElement;t._self._c;return t._m(0)},s=[function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("div",{staticClass:"home-block"},[i("img",{staticClass:"home-img",attrs:{src:n("ae49")}})])}],a={name:"home",data:function(){return{items:[{title:"Худи"},{title:"Майка"},{title:"Джинсы"}]}},methods:{addItem:function(t){this.$store.commit("addNewItem",t)}}},c=a,o=n("2877"),r=Object(o["a"])(c,i,s,!1,null,null,null);e["default"]=r.exports}}]);
-//# sourceMappingURL=chunk-25636708.3f06f675.js.map
+//# sourceMappingURL=chunk-25636708.4cc9a377.js.map

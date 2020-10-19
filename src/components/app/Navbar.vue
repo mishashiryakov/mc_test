@@ -122,7 +122,6 @@
             <p class="total-price">{{this.preTotalSum + " ₽"}}</p>
           </div>
 
-
           <div class="checkout-button">
             Оформить заказ
           </div>
@@ -134,17 +133,14 @@
           Ваша корзина пуста
         </p>
 
-
-
-
     </Drawer>
 
   </div>
 </template>
 
 <script>
-import { Dropdown, DropdownMenu, DropdownItem, Icon, Drawer } from 'view-design';
-import ItemInCart from '@/components/app/ItemInCart';
+import { Dropdown, DropdownMenu, DropdownItem, Icon, Drawer } from 'view-design'
+import ItemInCart from '@/components/app/ItemInCart'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -156,40 +152,40 @@ export default {
     return {
       openCart: false,
       clothes: [
-        {title: 'Футболки', url: '/goods', name: 'tshirt'},
-        {title: 'Худи', url: '/goods', name: 'hoodie'},
-        {title: 'Шорты', url: '/goods', name: 'short'},
+        { title: 'Футболки', url: '/goods', name: 'tshirt' },
+        { title: 'Худи', url: '/goods', name: 'hoodie' },
+        { title: 'Шорты', url: '/goods', name: 'short' }
       ],
       accesories: [
-        {title: 'Кепки', url: '/goods', name: 'cap'},
-        {title: 'Сумки', url: '/goods', name: 'bag'},
+        { title: 'Кепки', url: '/goods', name: 'cap' },
+        { title: 'Сумки', url: '/goods', name: 'bag' }
       ],
       collections: [
-        {title: 'Air Zoom', url: '/goods', name: 'airzoom'},
-        {title: 'Dry Fit', url: '/goods', name: 'dryfit'},
-        {title: 'Zoom', url: '/goods', name: 'zoom'},
+        { title: 'Air Zoom', url: '/goods', name: 'airzoom' },
+        { title: 'Dry Fit', url: '/goods', name: 'dryfit' },
+        { title: 'Zoom', url: '/goods', name: 'zoom' }
       ],
       name: null,
-      preTotalSum: 0,
+      preTotalSum: 0
     }
   },
 
   methods: {
     setCurrentItem (name) {
-        this.$store.commit('setCurrentItem', name)
+      this.$store.commit('setCurrentItem', name)
     },
     getTotalPrice (price) {
-      if (price.symbol == '+') {
+      if (price.symbol === '+') {
         this.preTotalSum += price.price
       }
 
-      if (price.symbol == '-') {
+      if (price.symbol === '-') {
         this.preTotalSum -= price.price
       }
     },
     openCartFunc () {
-      this.preTotalSum = 0;
-      this.openCart = !this.openCart;
+      this.preTotalSum = 0
+      this.openCart = !this.openCart
       setTimeout(() => {
         document.querySelectorAll('.cart-price').forEach(el => {
           this.preTotalSum += +el.innerHTML.substring(0, el.innerHTML.length - 2).trim()
@@ -202,13 +198,15 @@ export default {
       'getCartData'
     ]),
     cartItems () {
-      if(this.$store.getters.getCartData) {
+      if (this.$store.getters.getCartData) {
         return this.$store.getters.getCartData
+      } else {
+        return ''
       }
     }
   },
-  created() {
-    this.$store.commit('getDataFromStorage');
-  },
+  created () {
+    this.$store.commit('getDataFromStorage')
+  }
 }
 </script>

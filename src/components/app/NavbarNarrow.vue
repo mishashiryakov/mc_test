@@ -70,7 +70,6 @@
       </Menu>
     </Drawer>
 
-
       <div id="easynetshop-cart">
         <div id="enscart_my_wrapper">
           <div id="enscart_myimage_wrapper">
@@ -115,7 +114,6 @@
             <p class="total-price">{{this.preTotalSum + " ₽"}}</p>
           </div>
 
-
           <div class="checkout-button">
             Оформить заказ
           </div>
@@ -127,66 +125,62 @@
           Ваша корзина пуста
         </p>
 
-
     </Drawer>
-
-
 
   </div>
 </template>
 
-
 <script>
-import ItemInCart from '@/components/app/ItemInCart';
-import { Button, Drawer, Menu, Submenu, MenuItem, MenuGroup } from 'view-design';
-import { mapGetters } from 'vuex';
+import ItemInCart from '@/components/app/ItemInCart'
+import { Drawer, Menu, Submenu, MenuItem } from 'view-design'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Navbar-narrow',
   components: {
-    Button, Drawer, ItemInCart, Menu, Submenu, MenuItem, MenuGroup
+    Drawer, ItemInCart, Menu, Submenu, MenuItem
   },
   data () {
     return {
       menu: false,
       openCart: false,
       clothes: [
-        {title: 'Футболки', url: '/goods', name: 'tshirt'},
-        {title: 'Худи', url: '/goods', name: 'hoodie'},
-        {title: 'Шорты', url: '/goods', name: 'short'},
+        { title: 'Футболки', url: '/goods', name: 'tshirt' },
+        { title: 'Худи', url: '/goods', name: 'hoodie' },
+        { title: 'Шорты', url: '/goods', name: 'short' }
       ],
       accesories: [
-        {title: 'Кепки', url: '/goods', name: 'cap'},
-        {title: 'Сумки', url: '/goods', name: 'bag'},
+        { title: 'Кепки', url: '/goods', name: 'cap' },
+        { title: 'Сумки', url: '/goods', name: 'bag' }
       ],
       collections: [
-        {title: 'Air Zoom', url: '/goods', name: 'airzoom'},
-        {title: 'Dry Fit', url: '/goods', name: 'dryfit'},
-        {title: 'Zoom', url: '/goods', name: 'zoom'},
+        { title: 'Air Zoom', url: '/goods', name: 'airzoom' },
+        { title: 'Dry Fit', url: '/goods', name: 'dryfit' },
+        { title: 'Zoom', url: '/goods', name: 'zoom' }
       ],
       name: null,
       width: null,
-      preTotalSum: 0,
+      preTotalSum: 0
     }
   },
   mounted () {
     document.querySelectorAll('.ivu-menu-item').forEach((el) => {
       el.addEventListener('click', (e) => {
-        let item;
+        let item
 
         switch (e.currentTarget.firstChild.innerHTML.trim()) {
           case 'Футболки':
-            item = 'tshirt';
-            break;
+            item = 'tshirt'
+            break
           case 'Худи':
-            item = 'hoodie';
-            break;
+            item = 'hoodie'
+            break
           case 'Air Zoom':
-            item = 'airzoom';
-            break;
+            item = 'airzoom'
+            break
         }
         this.setCurrentItem(item)
-        this.menu = !this.menu;
+        this.menu = !this.menu
         document.querySelector('.hamburger--squeeze').classList.remove('is-active')
       })
     })
@@ -197,42 +191,40 @@ export default {
 
     document.querySelector('.hamburger--squeeze').addEventListener('click', (event) => {
       this.openMenu()
-      const burger = event.currentTarget.classList;
+      const burger = event.currentTarget.classList
       if (this.menu) {
         burger.add('is-active')
       } else {
         burger.remove('is-active')
       }
-
     })
   },
   methods: {
     openMenu () {
-      this.menu = !this.menu;
+      this.menu = !this.menu
     },
     setCurrentItem (name) {
       this.$store.commit('setCurrentItem', name)
     },
-    updateWidth() {
+    updateWidth () {
       if (window.innerWidth <= 548) {
-        this.width = 100;
+        this.width = 100
       } else {
-        this.width = 548;
+        this.width = 548
       }
-
     },
     getTotalPrice (price) {
-      if (price.symbol == '+') {
+      if (price.symbol === '+') {
         this.preTotalSum += price.price
       }
 
-      if (price.symbol == '-') {
+      if (price.symbol === '-') {
         this.preTotalSum -= price.price
       }
     },
     openCartFunc () {
-      this.preTotalSum = 0;
-      this.openCart = !this.openCart;
+      this.preTotalSum = 0
+      this.openCart = !this.openCart
       setTimeout(() => {
         document.querySelectorAll('.cart-price').forEach(el => {
           this.preTotalSum += +el.innerHTML.substring(0, el.innerHTML.length - 2).trim()
@@ -241,19 +233,21 @@ export default {
     }
   },
   computed: {
-  ...mapGetters([
-    'getCartData'
-  ]),
-  cartItems () {
-    if(this.$store.getters.getCartData) {
-      return this.$store.getters.getCartData
+    ...mapGetters([
+      'getCartData'
+    ]),
+    cartItems () {
+      if (this.$store.getters.getCartData) {
+        return this.$store.getters.getCartData
+      } else {
+        return ''
+      }
     }
-   }
   },
-  created() {
-    this.$store.commit('getDataFromStorage');
-    window.addEventListener('resize', this.updateWidth);
-    this.updateWidth();
+  created () {
+    this.$store.commit('getDataFromStorage')
+    window.addEventListener('resize', this.updateWidth)
+    this.updateWidth()
   }
 }
 </script>

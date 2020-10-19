@@ -47,7 +47,6 @@
         :paginationEnabled="false"
       >
 
-
           <Slide
              v-for="item in currentHistory"
             :key="item[1]"
@@ -67,18 +66,15 @@
             </div>
         </Slide>
 
-
-
       </Car>
     </div>
   </div>
 </template>
 
 <script>
-import { Carousel as Car, Slide } from 'vue-carousel';
-import { clothesData } from '../data';
-import CurrentGoodsComponent from '@/components/app/CurrentGoodsComponent';
-
+import { Carousel as Car, Slide } from 'vue-carousel'
+import { clothesData } from '../data'
+import CurrentGoodsComponent from '@/components/app/CurrentGoodsComponent'
 
 export default {
   name: 'CurrentGoods',
@@ -86,43 +82,43 @@ export default {
     Car, Slide, CurrentGoodsComponent
   },
   data () {
-    const offers = [clothesData['tshirt']['nikePro'], clothesData['hoodie']['casual'], clothesData['tshirt']['nike']];
+    const offers = [clothesData.tshirt.nikePro, clothesData.hoodie.casual, clothesData.tshirt.nike]
 
     return {
       clothesData,
-      offers,
+      offers
     }
   },
   computed: {
     currentGoods () {
-      if(this.$store.getters.getCurrentGoods) {
+      if (this.$store.getters.getCurrentGoods) {
         return this.$store.getters.getCurrentGoods
       } else {
-        return 'nigeria';
+        return 'nigeria'
       }
     },
     currentHistory () {
-      if(this.$store.getters.getHistory) {
+      if (this.$store.getters.getHistory) {
         return this.$store.getters.getHistory
       } else {
-        return 'nigeria';
+        return 'nigeria'
       }
     }
   },
   methods: {
     setCurrentGoods (category, item) {
-      this.$store.commit('setCurrentGoods', [category, item]);
-      this.$store.commit('addNewItemToHistory', [category, item]);
+      this.$store.commit('setCurrentGoods', [category, item])
+      this.$store.commit('addNewItemToHistory', [category, item])
       this.$store.commit('setCurrentItem', category)
-      while (Math.max(document.body.scrollTop,document.documentElement.scrollTop) > 0) {
-        window.scrollBy(0,-100);
+      while (Math.max(document.body.scrollTop, document.documentElement.scrollTop) > 0) {
+        window.scrollBy(0, -100)
       }
-    },
+    }
 
   },
   created () {
-    this.$store.commit('getCurrentGoodsFromStorage');
-    this.$store.commit('getHistoryFromStorage');
+    this.$store.commit('getCurrentGoodsFromStorage')
+    this.$store.commit('getHistoryFromStorage')
   }
 }
 </script>

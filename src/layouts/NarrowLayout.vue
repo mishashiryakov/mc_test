@@ -1,7 +1,7 @@
 <template>
   <div class="narrow-layout">
     <NavbarNarrow />
-    
+
     <router-view />
   </div>
 </template>

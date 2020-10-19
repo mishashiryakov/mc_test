@@ -1,52 +1,45 @@
-import nigeriaFront from './assets/clothes/tShirts/nigeria/nigeria-front.jpg';
-import nigeriaFrontNear from './assets/clothes/tShirts/nigeria/nigeria-front-near.jpg';
-import nigeriaBackNear from './assets/clothes/tShirts/nigeria/nigeria-back-near.jpg';
-import nigeriaBack from './assets/clothes/tShirts/nigeria/nigeria-back.jpg';
+import nigeriaFront from './assets/clothes/tShirts/nigeria/nigeria-front.jpg'
+import nigeriaFrontNear from './assets/clothes/tShirts/nigeria/nigeria-front-near.jpg'
+import nigeriaBackNear from './assets/clothes/tShirts/nigeria/nigeria-back-near.jpg'
+import nigeriaBack from './assets/clothes/tShirts/nigeria/nigeria-back.jpg'
 
+import nikeFront from './assets/clothes/tShirts/nike/nike-front.jpg'
+import nikeBack from './assets/clothes/tShirts/nike/nike-back.jpg'
+import nikeFrontNear from './assets/clothes/tShirts/nike/nike-front-near.jpg'
+import nikeCommon from './assets/clothes/tShirts/nike/nike-common.jpg'
 
+import nikeproFront from './assets/clothes/tShirts/nike-pro/nikepro-front.jpg'
+import nikeproBack from './assets/clothes/tShirts/nike-pro/nikepro-back.jpg'
+import nikeproFrontNear from './assets/clothes/tShirts/nike-pro/nikepro-front-near.jpg'
+import nikeproBackNear from './assets/clothes/tShirts/nike-pro/nikepro-back-near.jpg'
 
-import nikeFront from './assets/clothes/tShirts/nike/nike-front.jpg';
-import nikeBack from './assets/clothes/tShirts/nike/nike-back.jpg';
-import nikeFrontNear from './assets/clothes/tShirts/nike/nike-front-near.jpg';
-import nikeCommon from './assets/clothes/tShirts/nike/nike-common.jpg';
+import nikesunFront from './assets/clothes/tShirts/nike-sun/nikesun-front.jpg'
+import nikesunBack from './assets/clothes/tShirts/nike-sun/nikesun-back.jpg'
+import nikesunFrontNear from './assets/clothes/tShirts/nike-sun/nikesun-front-near.jpg'
+import nikesunCommon from './assets/clothes/tShirts/nike-sun/nikesun-common.jpg'
 
+import hoodieCasual from './assets/clothes/hoodie/nike-casual/casual-front.jpg'
+import hoodieCasual2 from './assets/clothes/hoodie/nike-casual/casual-back.jpg'
+import hoodieCasual3 from './assets/clothes/hoodie/nike-casual/casual-common.jpg'
 
-import nikeproFront from './assets/clothes/tShirts/nike-pro/nikepro-front.jpg';
-import nikeproBack from './assets/clothes/tShirts/nike-pro/nikepro-back.jpg';
-import nikeproFrontNear from  './assets/clothes/tShirts/nike-pro/nikepro-front-near.jpg';
-import nikeproBackNear from './assets/clothes/tShirts/nike-pro/nikepro-back-near.jpg';
+import hoodieSportswear from './assets/clothes/hoodie/nike-sportswear/sportswear-front.jpg'
+import hoodieSportswear2 from './assets/clothes/hoodie/nike-sportswear/sportswear-back.jpg'
+import hoodieSportswear3 from './assets/clothes/hoodie/nike-sportswear/sportswear-back-near.jpg'
+import hoodieSportswear4 from './assets/clothes/hoodie/nike-sportswear/sportswear-front-near.jpg'
 
-import nikesunFront from './assets/clothes/tShirts/nike-sun/nikesun-front.jpg';
-import nikesunBack from './assets/clothes/tShirts/nike-sun/nikesun-back.jpg';
-import nikesunFrontNear from './assets/clothes/tShirts/nike-sun/nikesun-front-near.jpg';
-import nikesunCommon from './assets/clothes/tShirts/nike-sun/nikesun-common.jpg';
+import pegasus from './assets/clothes/shoes/pegasus/pegasus.jpg'
+import pegasus2 from './assets/clothes/shoes/pegasus/pegasus2.jpg'
+import pegasus3 from './assets/clothes/shoes/pegasus/pegasus3.jpg'
 
-import hoodieCasual from './assets/clothes/hoodie/nike-casual/casual-front.jpg';
-import hoodieCasual2 from './assets/clothes/hoodie/nike-casual/casual-back.jpg';
-import hoodieCasual3 from './assets/clothes/hoodie/nike-casual/casual-common.jpg';
+import tempo from './assets/clothes/shoes/tempo/tempo.jpg'
+import tempo2 from './assets/clothes/shoes/tempo/tempo2.jpg'
+import tempo3 from './assets/clothes/shoes/tempo/tempo3.jpg'
 
-import hoodieSportswear from './assets/clothes/hoodie/nike-sportswear/sportswear-front.jpg';
-import hoodieSportswear2 from './assets/clothes/hoodie/nike-sportswear/sportswear-back.jpg';
-import hoodieSportswear3 from './assets/clothes/hoodie/nike-sportswear/sportswear-back-near.jpg';
-import hoodieSportswear4 from './assets/clothes/hoodie/nike-sportswear/sportswear-front-near.jpg';
+import flyknit from './assets/clothes/shoes/flyknit/flyknit.jpg'
+import flyknit2 from './assets/clothes/shoes/flyknit/flyknit2.jpg'
+import flyknit3 from './assets/clothes/shoes/flyknit/flyknit3.jpg'
 
-import pegasus from './assets/clothes/shoes/pegasus/pegasus.jpg';
-import pegasus2 from './assets/clothes/shoes/pegasus/pegasus2.jpg';
-import pegasus3 from './assets/clothes/shoes/pegasus/pegasus3.jpg';
-
-import tempo from './assets/clothes/shoes/tempo/tempo.jpg';
-import tempo2 from './assets/clothes/shoes/tempo/tempo2.jpg';
-import tempo3 from './assets/clothes/shoes/tempo/tempo3.jpg';
-
-import flyknit from './assets/clothes/shoes/flyknit/flyknit.jpg';
-import flyknit2 from './assets/clothes/shoes/flyknit/flyknit2.jpg';
-import flyknit3 from './assets/clothes/shoes/flyknit/flyknit3.jpg';
-
-
-
-
-const TShirtCare = 'Только ручная стирка при температуре не выше 30 градусов, нейтральными моющими средствами; не тереть; не отжимать; отбеливание запрещено; не стирать моющими средствами содержащие отбеливатель; химчистка запрещена; гладить при низкой температуре до 100 градусов; сушить в тени на горизонтальной поверхности.';
-
+const TShirtCare = 'Только ручная стирка при температуре не выше 30 градусов, нейтральными моющими средствами; не тереть; не отжимать; отбеливание запрещено; не стирать моющими средствами содержащие отбеливатель; химчистка запрещена; гладить при низкой температуре до 100 градусов; сушить в тени на горизонтальной поверхности.'
 
 export const clothesData = {
   tshirt: {
@@ -64,8 +57,9 @@ export const clothesData = {
         nigeriaFront,
         nigeriaFrontNear,
         nigeriaBack,
-        nigeriaBackNear,
-      ]
+        nigeriaBackNear
+      ],
+      existence: true
     },
     nike: {
       name: 'Футболка Nike',
@@ -80,9 +74,10 @@ export const clothesData = {
       images: [
         nikeFront,
         nikeBack,
-        nikeFrontNear ,
+        nikeFrontNear,
         nikeCommon
-      ]
+      ],
+      existence: true
     },
     nikePro: {
       name: 'Футболка Nike Pro',
@@ -99,7 +94,8 @@ export const clothesData = {
         nikeproBack,
         nikeproFrontNear,
         nikeproBackNear
-      ]
+      ],
+      existence: false
     },
     nikeSun: {
       name: 'Футболка Nike Sun',
@@ -116,7 +112,8 @@ export const clothesData = {
         nikesunBack,
         nikesunFrontNear,
         nikesunCommon
-      ]
+      ],
+      existence: true
     }
   },
   hoodie: {
@@ -134,7 +131,8 @@ export const clothesData = {
         hoodieCasual,
         hoodieCasual2,
         hoodieCasual3
-      ]
+      ],
+      existence: true
     },
     sportswear: {
       name: 'Худи Nike Sportswear',
@@ -151,7 +149,8 @@ export const clothesData = {
         hoodieSportswear2,
         hoodieSportswear3,
         hoodieSportswear4
-      ]
+      ],
+      existence: true
     }
   },
   short: {
@@ -178,7 +177,8 @@ export const clothesData = {
         pegasus,
         pegasus2,
         pegasus3
-      ]
+      ],
+      existence: true
     },
     tempo: {
       name: 'Кроссовки Nike Tempo',
@@ -194,7 +194,8 @@ export const clothesData = {
         tempo,
         tempo2,
         tempo3
-      ]
+      ],
+      existence: true
     },
     flyknit: {
       name: 'Кроссовки Nike Flyknit',
@@ -210,7 +211,8 @@ export const clothesData = {
         flyknit,
         flyknit2,
         flyknit3
-      ]
+      ],
+      existence: true
     }
   },
   dryfit: {
@@ -218,7 +220,5 @@ export const clothesData = {
   },
   zoom: {
 
-  },
+  }
 }
-
-
