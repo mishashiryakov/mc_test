@@ -32,7 +32,8 @@
 }
 
 .img-preview {
-  width: 100%;
+  width: 43px;
+  height: 55px;
   cursor: pointer;
   opacity: .6;
   user-select: none;
@@ -309,6 +310,7 @@ button .ivu-icon {
 
 .img-slide {
   width: 70px;
+  height: 87px;
   margin-right: 19px;
 }
 
@@ -380,7 +382,7 @@ button .ivu-icon {
 
   .history-views {
     width: 450px;
-    margin: 0 auto;
+    margin: 0 auto 90px auto;
   }
 
   .img-block {
@@ -398,7 +400,7 @@ button .ivu-icon {
   }
 
   .img-preview {
-    margin-right: 20px;
+    margin-right: 15px;
   }
 
   .current-goods-size-button {
@@ -430,6 +432,6 @@ button .ivu-icon {
 @media (max-width: 631px) {
   .history-views {
     width: 70vw;
-    margin: 0 auto;
+    margin: 0 auto 90px auto;
   }
 }
