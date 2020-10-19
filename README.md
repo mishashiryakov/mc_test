@@ -1,4 +1,4 @@
-# vue_crm_vladilen
+# vue_mediacube_test
 
 ## Project setup
 ```
@@ -19,6 +19,11 @@ npm run build
 ```
 npm run lint
 ```
+## Project description
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Функционал
+```
+sdfsdf
+```
+
+
