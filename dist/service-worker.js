@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.802f3b0b4ff014e502a989e5ee5c9c88.js"
+  "/precache-manifest.f7e6aa1c382499f769c8196badde5995.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "vue_nike_test"});

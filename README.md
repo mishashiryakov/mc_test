@@ -26,7 +26,9 @@ https://mc-test.netlify.app
 ```
 ### Технологии
 ```
-Vue.js, Vuex, VueRouter, Vue CLI, SCSS, JavaScript, HTML, ESLint, Git, Babel
+Vue.js, Vuex, VueRouter, Vue CLI, SCSS, JavaScript, HTML, ESLint, Git, Babel, Prettier
+
+Делал около 40 часов, с учетом изучения документации Vue JS.
 
 Библиотеки UI копмонентов:
 
@@ -74,5 +76,15 @@ Vue.js, Vuex, VueRouter, Vue CLI, SCSS, JavaScript, HTML, ESLint, Git, Babel
 Есть два layouta. До 800px выбор товара находится в открывающемся бургер меню. После 800px из dropdown вверху страницы.
 
 Полный адаптив до 320px
+```
+## Что хотел бы реализовать
+```
+1. Поиск.
+2. Свайпер картинок на телефоне.
+3. Footer. В нем нет функционала, поэтому решил не тратить время.
+4. User data. Хранить  логин пароль на firebase.
+5. Рандомный рендер товаров в блоке "Смотрите также". Мало товаров, чтобы сделать хорошо.
+
+В целом уже достаточно времени потратил на проект, реализовать можно было много чего еще.
 ```
 
