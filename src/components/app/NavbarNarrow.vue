@@ -71,9 +71,9 @@
     </Drawer>
 
       <div id="easynetshop-cart">
-        <div id="enscart_my_wrapper">
+        <div @click="openCartFunc" id="enscart_my_wrapper">
           <div id="enscart_myimage_wrapper">
-            <img class="cart-icon" @click="openCartFunc" src="../../assets/icons/cart.svg">
+            <img class="cart-icon" src="../../assets/icons/cart.svg">
           </div>
           <div id="enscart_my_counter_wrapper" v-if="getCartData.length"><span  id="easynetshop-cart-count"> {{getCartData.length}} </span></div>
         </div>
